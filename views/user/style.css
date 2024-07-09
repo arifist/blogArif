@@ -3494,7 +3494,7 @@ body{
    Start Kutu CSS
 ===========================*/
 /* Telefon iconu için stil */
-.phone-icon {
+.mail-icon {
     font-size: 2rem; /* İstediğiniz büyüklük */
     margin-right: 1rem; /* İkon ile numara arasındaki boşluk */
     vertical-align: middle; /* İkonu dikey olarak hizala */
@@ -3502,9 +3502,9 @@ body{
 
 /* Telefon numarası için stil */
 .single-content h3 {
-    font-size: 1.5rem; /* Numara için uygun boyut */
+    font-size: 1.5rem; /* Metin için uygun boyut */
     display: inline-block; /* Satır içi blok olarak görüntüle */
-    vertical-align: middle; /* Numarayı dikey olarak hizala */
+    vertical-align: middle; /* Metni dikey olarak hizala */
 }
 
 
@@ -3544,6 +3544,116 @@ body{
 
 /*=========================
    End Kutu CSS
+===========================*/
+
+
+/*=========================
+   Movies Kutu CSS
+===========================*/
+.movies-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.film {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 47%; /* Yüzde olarak ayarlandı */
+	transition: transform 0.3s ease;
+	margin-bottom: 20px;
+}
+
+.film:hover {
+	transform: translateY(-5px);
+}
+
+.film img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	aspect-ratio: 1 / 1; /* Genişlik ve yükseklik oranını 1:1 olarak koruyacak */
+
+}
+
+.film-details {
+	padding: 12px;
+}
+
+.film-details h3 {
+	margin-top: 0;
+	font-size: 18px;
+}
+
+.film-details ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 8px 0 0;
+}
+
+.film-details ul li {
+	margin-bottom: 4px;
+}
+
+/*=========================
+   End movies Kutu CSS
+===========================*/
+/*=========================
+   Music Kutu CSS
+===========================*/
+.music-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.album {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 85%; /* Yüzde olarak ayarlandı */
+	transition: transform 0.3s ease;
+	margin-bottom: 20px;
+}
+
+.album:hover {
+	transform: translateY(-5px);
+}
+
+.album img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	aspect-ratio: 1 / 1; /* Genişlik ve yükseklik oranını 1:1 olarak koruyacak */
+
+}
+
+.album-details {
+	padding: 12px;
+}
+
+.album-details h3 {
+	margin-top: 0;
+	font-size: 18px;
+}
+
+.album-details ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 8px 0 0;
+}
+
+.album-details ul li {
+	margin-bottom: 4px;
+}
+
+/*=========================
+   End Music Kutu CSS
 ===========================*/
 
 /*========================
