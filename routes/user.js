@@ -5,7 +5,23 @@ const userController=require("../controller/user");
 
 router.get("/",userController.homePage);
 
-router.get("/mySkills",userController.skills);
+router.get("/projects",userController.projects);
+
+router.get("/project1",userController.project1);
+
+router.get("/project2",userController.project2);
+
+router.get("/project3",userController.project3);
+
+router.get("/project4",userController.project4);
+
+router.get("/project5",userController.project5);
+
+router.get("/project6",userController.project6);
+
+router.get("/experiences",userController.experiences);
+
+router.get("/certificates",userController.certificates);
 
 router.get("/cv",userController.cv);
 
@@ -27,9 +43,9 @@ router.get("/movies",userController.movies);
 
 router.get("/musics",userController.musics);
 
-router.get("/contact",userController.contactGet);
+router.get("/contact", userController.contactGet);
 
-router.get("/contact",userController.contactPost);
+router.post("/contact", userController.contactPost);
 
 
 

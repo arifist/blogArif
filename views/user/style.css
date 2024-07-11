@@ -3481,6 +3481,38 @@ body{
    Start BreadCrumbs CSS
 ===========================*/
 
+.breadcrumbs.overlay {
+    height: 50px; /* Yüksekliği yarıya indir */
+}
+
+.breadcrumbs.overlay .container {
+    height: 100%; /* İçerik yüksekliğini ayarla */
+    display: flex;
+    align-items: center; /* İçeriği dikeyde ortala */
+}
+
+.breadcrumbs.overlay .bread-inner {
+    width: 100%; /* Genişliği ayarla */
+}
+
+.breadcrumbs.overlay h2 {
+    margin-bottom: 0; /* Başlık alt boşluğunu kaldır */
+}
+
+.breadcrumbs.overlay .bread-list {
+	padding-top: 15px;
+    align-items: center; /* Liste öğelerini dikeyde ortala */
+    height: 100%; /* Liste yüksekliğini ayarla */
+}
+
+.breadcrumbs.overlay .bread-list li {
+    list-style: none; /* Madde işaretlerini kaldır */
+    margin-right: 10px; /* Liste öğeleri arasına boşluk ekle */
+}
+
+.breadcrumbs.overlay .bread-list li:last-child {
+    margin-right: 0; /* Son liste öğesi için sağ boşluğu kaldır */
+}
 
   
   
@@ -3601,6 +3633,61 @@ body{
 /*=========================
    End movies Kutu CSS
 ===========================*/
+
+/*=========================
+   Ilgi Alanlari Kutu CSS
+===========================*/
+.services .section-title h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.services .section-title p {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 40px;
+}
+
+.single-interest {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	padding: 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.single-interest i {
+	font-size: 40px;
+	color: #007bff;
+	margin-bottom: 15px;
+}
+
+.single-interest h4 a {
+	font-size: 20px;
+	color: #333;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.single-interest h4 a:hover {
+	color: #007bff;
+}
+
+.single-interest p {
+	font-size: 14px;
+	color: #666;
+}
+
+.single-interest:hover {
+	box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	transform: translateY(-5px);
+}
+/*=========================
+   EndIlgi Alanlari Kutu CSS
+===========================*/ 
 /*=========================
    Music Kutu CSS
 ===========================*/
@@ -4385,4 +4472,224 @@ body{
 }
 /*=========================
 	End Footer CSS
+===========================*/
+
+/*=========================
+	Ilgi Alanlari Footer CSS
+===========================*/
+.services .section-title h2 {
+	font-size: 36px;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.services .section-title p {
+	font-size: 16px;
+	color: #666;
+	margin-bottom: 40px;
+}
+
+.services .section-title i {
+	font-size: 40px;
+	color: #007bff;
+	margin-bottom: 15px;
+	display: block;
+}
+
+.single-interest {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	padding: 20px;
+	margin-bottom: 30px;
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.single-interest i {
+	font-size: 40px; /* Tüm ikonların boyutunu eşitle */
+	color: #007bff;
+	margin-bottom: 15px;
+}
+
+.single-interest h4 a {
+	font-size: 20px;
+	color: #333;
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+.single-interest h4 a:hover {
+	color: #007bff;
+}
+
+.single-interest p {
+	font-size: 14px;
+	color: #666;
+}
+
+.single-interest:hover {
+	box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	transform: translateY(-5px);
+}
+/*=========================
+	End Ilgi Alanlari Footer CSS
+===========================*/
+
+/*=========================
+	Project  Alanlari Footer CSS
+===========================*/
+.project-list {
+	display: flex;
+	flex-direction: column; /* Alt alta sıralama */
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+	background-color: #f5f7fa; /* Soft bir arka plan rengi */
+}
+
+
+.project-title {
+	font-size: 28px;
+	font-weight: bold;
+	color: #333333;
+	margin-bottom: 25px;
+	text-align: center;
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.project-description {
+	font-size: 18px;
+	color: #555555;
+	margin-bottom: 25px;
+	line-height: 1.6;
+}
+
+.project-subtitle {
+	font-size: 22px;
+	font-weight: bold;
+	color: #444444;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+.project-text {
+	font-size: 18px;
+	color: #666666;
+	margin-bottom: 25px;
+	line-height: 1.6;
+}
+
+.project-link a {
+	display: inline-block;
+	font-size: 18px;
+	color: #1e90ff;
+	text-decoration: none;
+	background-color: #f0f8ff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-link a:hover {
+	background-color: #1e90ff;
+	color: #ffffff;
+}
+
+.project-list1 {
+	display: flex;
+	flex-direction: column; /* Alt alta sıralama */
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+	background-color: #f5f7fa; /* Soft bir arka plan rengi */
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px; /* Kart genişliğini artırma */
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto 30px; /* Alt boşluğu artırma */
+    position: relative;
+    text-align: left;
+    height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
+    min-height: 170px; /* Minimum yüksekliği belirleme */
+}
+
+.project-card:last-child {
+    margin-bottom: 0; /* Son kartın altındaki boşluğu kaldırma */
+}
+
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+}
+
+.project-card-logo img {
+    width: 50px;
+    height: auto;
+}
+
+.project-card-body {
+    margin-top: 10px; /* Üst boşluğu azaltma */
+}
+
+.project-card-tech {
+    font-size: 18px;
+    color: #555555;
+    margin: 0;
+}
+
+.project-card-link {
+    font-size: 14px; /* Font boyutunu küçültme */
+    color: #1e90ff;
+    text-decoration: none;
+    background-color: #f0f8ff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    bottom: 6px; /* Kartın altından yukarıdaki mesafe */
+    right: 20px; /* Kartın sağından soldaki mesafe */
+}
+
+.project-card-link:hover {
+    background-color: #1e90ff;
+    color: #ffffff;
+}
+
+
+
+
+
+
+
+
+/*=========================
+	End Project  Alanlari Footer CSS
 ===========================*/
