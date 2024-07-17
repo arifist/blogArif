@@ -186,6 +186,15 @@ body{
 .color-plate span.color12{
 	background:#44ce6f;
 }
+
+.row{
+	flex-wrap: wrap;
+}
+
+.main-sidebar{
+	flex-basis: 200px;
+}
+
 /*=============================
 	End Global CSS 
 ===============================*/
@@ -4693,3 +4702,71 @@ body{
 /*=========================
 	End Project  Alanlari Footer CSS
 ===========================*/
+
+.project-card1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px; /* Kart genişliğini artırma */
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto 30px; /* Alt boşluğu artırma */
+    position: relative;
+    text-align: left;
+    height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
+    min-height: 150px; /* Minimum yüksekliği belirleme */
+}
+
+.project-card1:last-child {
+    margin-bottom: 0; /* Son kartın altındaki boşluğu kaldırma */
+}
+
+.project-card1-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-card1-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    margin: 0;
+}
+
+.project-card1-logo img {
+    width: 50px;
+    height: auto;
+}
+
+.project-card1-body {
+    margin-top: 10px; /* Üst boşluğu azaltma */
+}
+
+.project-card1-tech {
+    font-size: 18px;
+    color: #555555;
+    margin: 0;
+}
+
+.project-card1-link {
+    font-size: 14px; /* Font boyutunu küçültme */
+    color: #1e90ff;
+    text-decoration: none;
+    background-color: #f0f8ff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    bottom: 8px; /* Kartın altından yukarıdaki mesafe */
+    right: 20px; /* Kartın sağından soldaki mesafe */
+}
+
+.project-card1-link:hover {
+    background-color: #1e90ff;
+    color: #ffffff;
+}

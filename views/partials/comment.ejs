@@ -1,0 +1,94 @@
+                            <!-- yorum -->
+							<div class="col-12">
+								<div class="comments-form">
+									<h2>Yorum Bırakın</h2>
+									<!-- Contact Form -->
+									<form class="form" method="POST" action="#">
+
+                                        <div class="col-md-12">
+                                            <div style="display:none ;" class="alert alert-success" id="sendMessage"></div>
+                                         </div>
+
+										<div class="row">
+											<div class="col-lg-4 col-md-4 col-12">
+												<div class="form-group">
+													<i class="fa fa-user"></i>
+													<input type="text" name="name" placeholder="İsim" required="required">
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4 col-12">
+												<div class="form-group">
+													<i class="fa fa-envelope"></i>
+													<input type="text" name="last-name" placeholder="Soy İsim" required="required">
+												</div>
+											</div>
+											<div class="col-lg-4 col-md-4 col-12">
+												<div class="form-group">
+													<i class="fa fa-envelope"></i>
+													<input type="email" name="email" placeholder="Email" required="required">
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="form-group message">
+													<i class="fa fa-pencil"></i>
+													<textarea name="message" rows="7" placeholder="Yorum" ></textarea>
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="form-group button">	
+													<button type="submit" class="btn primary"><i class="fa fa-send"></i>Yorum Gönder</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<!--/ End Contact Form -->
+								</div>
+							</div>
+
+                            <script>
+                                const form = document.querySelector('form')
+                                const sendMessage = document.querySelector('#sendMessage')
+                    
+                                form.addEventListener("submit", async (e) => {
+                                   e.preventDefault();
+                    
+                                   const name = form.name.values
+                                   const email = form.email.value
+                                   const message = form.message.value
+                    
+                                   try {
+                                      const res = await fetch('/contact', {
+                                         method: "POST",
+                                         body: JSON.stringify({ name, email, message }),
+                                         headers: { "Content-Type": "application/json" }
+                                      })
+                    
+                                      const data = await res.json();
+                    
+                                      console.log("DATA", data)
+                    
+                                      if (data.succeeded) {
+                    
+                                         sendMessage.textContent = "Yorumunuz değerlendirmeye alınmıştır. Teşekkürler..."
+                                         sendMessage.style.display = "block"
+                    
+                                         setTimeout(() => {
+                                            sendMessage.style.display = "none"
+                                            form.name.value = ""
+                                            form.email.value = ""
+                                            form.message.value = ""
+                    
+                                         }, 5000)
+                    
+                    
+                    
+                                      }
+                    
+                    
+                                   } catch (err) {
+                                      console.log("ERR::", err)
+                                   }
+                                })
+                             </script>
+                    
+                    

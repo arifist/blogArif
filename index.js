@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const configSession=require("./middleware/config_Session");
 const cookieParser = require('cookie-parser')
+require('dotenv').config();
 
 const app=express();
 

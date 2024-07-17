@@ -76,7 +76,11 @@
                                 <h2>Benimle İletişime Geçin</h2>
                                 <p>Kafanıza takılan herhangi bir durum için iletişime geçebilirsiniz</p>
                                 <!-- Form -->
-                                <form class="form" method="post" action="/contact">
+                                <form class="form" id="request" action="/contact" method="POST">
+                                    <div class="col-md-12">
+                                        <div style="display:none ;" class="alert alert-success" id="sendMessage"></div>
+                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -88,11 +92,7 @@
                                                 <input type="email" name="email" placeholder="Email" required="" style="text-transform: none;">
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <input type="text" name="phone" placeholder="Telefon" required="">
-                                            </div>
-                                        </div>
+
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <input type="text" name="subject" placeholder="Konu" required="">
@@ -110,14 +110,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <!--/ End Form -->
-                                <% if (typeof success !== 'undefined') { %>
-                                    <% if (success) { %>
-                                        <p style="color: green;">E-posta başarıyla gönderildi!</p>
-                                    <% } else { %>
-                                        <p style="color: red;">E-posta gönderilemedi. Lütfen tekrar deneyin.</p>
-                                    <% } %>
-                                <% } %>
+
                             </div>
                         </div>
                     </div>
@@ -177,4 +170,51 @@
 		<%- include('../partials/script.ejs') %>
 
     </body>
+    <script>
+        const form = document.querySelector('form')
+        const sendMessage = document.querySelector('#sendMessage')
+
+        form.addEventListener("submit", async (e) => {
+           e.preventDefault();
+
+           const name = form.name.value
+           const email = form.email.value
+           const message = form.message.value
+
+           try {
+              const res = await fetch('/contact', {
+                 method: "POST",
+                 body: JSON.stringify({ name, email, message }),
+                 headers: { "Content-Type": "application/json" }
+              })
+
+              const data = await res.json();
+
+              console.log("DATA", data)
+
+              if (data.succeeded) {
+
+                 sendMessage.textContent = "Mesajınız başarıyla gönderildi..."
+                 sendMessage.style.display = "block"
+
+                 setTimeout(() => {
+                    sendMessage.style.display = "none"
+                    form.name.value = ""
+                    form.email.value = ""
+                    form.message.value = ""
+
+                 }, 5000)
+
+
+
+              }
+
+
+           } catch (err) {
+              console.log("ERR::", err)
+           }
+        })
+     </script>
+
 </html>
+
