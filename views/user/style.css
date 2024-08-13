@@ -5,75 +5,7 @@ body{
 	font-size:14px;
 	color:#888;
 }
-.pro-features {
-	position: fixed;
-	right: -300px;
-	width: 300px;
-	height: auto;
-	line-height: 46px;
-	font-size: 14px;
-	background: #fff;
-	text-align: left;
-	color: #333;
-	top: 50%;
-	transform:translateY(-50%);
-	box-shadow: -4px 0px 5px #00000036;
-	color: #fff;
-	z-index: 9999;
-	padding:20px 30px 30px 30px;
-	-webkit-transition:all 0.4s ease;
-	-moz-transition:all 0.4s ease;
-	transition:all 0.4s ease;
-}
-.pro-features.active{
-	right:0;
-}
-.pro-features li.big-title {
-	font-weight: 600;
-	color: #1A76D1;
-	font-size: 15px;
-}
-.pro-features li.title {
-	font-weight: 600;
-	color: #1A76D1;
-	font-size: 15px;
-}
-.pro-features .button{}
-.pro-features .button .btn {
-	width: 100%;
-	text-align: center;
-	margin-top: 8px;
-	display: inline-block;
-	float: left;
-	font-size: 13px;
-	width: 100%;
-	text-transform: capitalize;
-}
-.pro-features li {
-	color: #333;
-	margin: 0;
-	padding: 0;
-	line-height: 22px;
-	margin-bottom: 10px;
-}
-.get-pro {
-	position: absolute;
-	left: -80px;
-	width:80px;
-	height: 45px;
-	line-height: 45px;
-	font-size: 14px;
-	border-radius: 5px 0 0 5px;
-	background: #1A76D1;
-	text-align: center;
-	color: #fff;
-	top: 0;
-	cursor: pointer;
-	box-shadow: -4px 0px 5px #00000036;
-}
-.get-pro:hover{
-	
-}
+
 #scrollUp {
 	bottom: 15px;
 	right: 15px;
@@ -203,33 +135,46 @@ body{
 	Start Book  CSS 
 ===============================*/
 
+/* Genel Ayarlar */
 .book-blog {
-	font-size: 16px; /* Örnek olarak 18 piksel olarak ayarladım, isteğinize göre bu değeri değiştirebilirsiniz */
-	line-height: 1.6; /* Satır yüksekliği ayarı */
-	margin-bottom: 20px; /* İstenilen alt boşluk ayarı */
+	font-size: 16px; /* Varsayılan font boyutu */
+	line-height: 1.6;
+	margin-bottom: 20px;
 }
+
+/* Kitap Listesi */
 .book-list {
 	display: grid;
 	gap: 20px;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Mobil uyumlu genişlik */
 }
+
+/* Kitap Öğesi */
 .book-item {
-	background-color: aliceblue;
+	background-color: #F5F5F5;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	transition: transform 0.3s ease;
+	overflow: hidden; /* İçeriğin taşmasını önler */
 }
-.book-item:hover {
-	transform: translateY(-5px);
-}
-.book-item h3 {
-	margin: 0;
-	font-size: 18px;
-	font-weight: 600;
-	color: #333;
-	line-height: 1.4;
-}
+
+	/* Hover Efekti */
+	.book-item:hover {
+		transform: translateY(-5px);
+	}
+
+	/* Başlık */
+	.book-item h3 {
+		margin: 0;
+		font-size: 16px; /* Varsayılan font boyutu */
+		font-weight: 600;
+		color: #333;
+		line-height: 1.4;
+		word-wrap: break-word; /* Metin taşmasını önler */
+	}
+
+/* Rating Bar */
 .rating-bar {
 	width: 100%;
 	height: 20px;
@@ -238,18 +183,34 @@ body{
 	margin-top: 8px;
 	overflow: hidden;
 }
+
 .rating-bar-inner {
 	height: 100%;
 	background-color: #4CAF50;
 	border-radius: 10px;
 	transition: width 0.3s ease;
 }
+
 .rating-label {
 	margin-top: 4px;
 	font-size: 14px;
 	color: #666;
 	text-align: right;
 }
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+	.book-item h3 {
+		font-size: 14px; /* Daha küçük ekranlar için font boyutu */
+	}
+}
+
+@media (max-width: 576px) {
+	.book-item h3 {
+		font-size: 12px; /* Çok küçük ekranlar için font boyutu */
+	}
+}
+
 
 /*=============================
 	End Book CSS 
@@ -599,6 +560,74 @@ body{
 	animation: fadeInDown 0.5s both 0.1s;
 	box-shadow:0px 0px 13px #00000054;
 }
+
+/* media kısmı */
+
+/* Responsive Media Query */
+@media (max-width: 1200px) {
+    .header .single-widget {
+        margin-right: 25px;
+        padding-left: 45px;
+    }
+    .header .single-widget i {
+        height: 35px;
+        width: 35px;
+        line-height: 35px;
+        font-size: 13px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+	.header .top-contact li a{
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 11px; /* Küçük bir font boyutu */
+    }
+	.header .top-contact li{
+        display: inline-block;
+        margin-right: 15px;
+        font-size: 11px; /* Küçük bir font boyutu */
+    }
+    .header .header-inner {
+        padding: 5px 0;
+    }
+    .header .logo {
+        text-align: center;
+        margin-top: 5px;
+    }
+    .header .nav {
+        text-align: center;
+    }
+    .header .nav li {
+        display: block;
+        margin: 0;
+    }
+    .header .nav li a {
+        padding: 8px 0;
+    }
+    .header .nav li .dropdown {
+        position: static;
+        box-shadow: none;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        top: auto;
+        padding: 0;
+        border-radius: 0;
+    }
+    .header .nav li .dropdown li {
+        padding: 0;
+    }
+    .header .nav li .dropdown li a {
+        padding: 8px 15px;
+    }
+    .header .nav li:hover .dropdown {
+        top: auto;
+    }
+}
+
 /*=========================
 	End Header CSS
 ===========================*/
@@ -702,6 +731,43 @@ body{
 .owl-item.active .single-slider .button{
     animation: fadeInDown 1s both 1.5s;
 }
+
+
+/* media */
+
+
+
+
+/* Küçük Ekranlar (Telefon) */
+@media (max-width: 767px) {
+    .slider .single-slider {
+        height: auto; /* Telefonlar için daha küçük bir yükseklik */
+		
+    }
+    .slider .single-slider .text {
+        margin-top: 80px; /* Telefonlar için daha yakın bir üst boşluk */
+    }
+    .slider .single-slider h1 {
+        font-size: 24px; /* Yazı boyutunu telefon boyutlarına göre daha da küçültme */
+        line-height: 28px;
+    }
+    .slider .single-slider p {
+        margin-top: 10px; /* Paragraf aralığını telefon boyutları için daha az yapma */
+        font-size: 14px; /* Paragraf yazı boyutunu küçültme */
+    }
+    .slider .single-slider .button {
+        margin-top: 10px; /* Butonlar arasındaki boşluğu telefonlar için azaltma */
+        text-align: center; /* Butonları ortalamak için */
+    }
+    .slider .single-slider .btn {
+        font-size: 11px !important; /* Buton yazı boyutunu küçültme */
+        padding: 4px 8px !important; /* Buton boyutunu küçültme */
+        margin: 0 5px; /* Butonlar arasındaki boşluğu azaltma ve yan yana gelmelerini sağlama */
+    }
+}
+
+
+
 /*===========================
 	End Hero Area CSS
 =============================*/
@@ -844,6 +910,64 @@ body{
 	font-weight: 400;
 	float: right;
 }
+
+
+
+/* media */
+@media (max-width: 991px) {
+    .schedule .single-schedule {
+        text-align: center; /* İçeriği merkezlemek için hizalama */
+        display: inline-block; /* Bileşenleri yan yana yerleştirmek için inline-block */
+        width: 45%; /* Genişliği %45 olarak ayarladık, böylece iki bileşen yan yana sığar */
+        margin: 0 2.5% 20px; /* Bileşenler arasındaki boşluğu ve kenar boşluklarını ayarladık */
+        vertical-align: top; /* Üst hizalamayı ayarladık */
+    }
+    .schedule .single-schedule .inner {
+        padding: 10px; /* İçerik dolgu alanını ayarlama */
+    }
+    .schedule .single-schedule .icon i {
+        font-size: 20px; /* Simgelerin boyutunu küçültme */
+        margin-bottom: 5px; /* Simge alt boşluğunu ayarlama */
+    }
+    .schedule .single-schedule h4 {
+        font-size: 14px; /* Başlık yazı boyutunu küçültme */
+        margin-top: 8px; /* Başlık üst boşluğunu ayarlama */
+    }
+    .schedule .single-schedule p {
+        font-size: 12px; /* Paragraf yazı boyutunu küçültme */
+        margin-top: 8px; /* Paragraf üst boşluğunu ayarlama */
+    }
+    .schedule .single-schedule a {
+        font-size: 12px; /* Bağlantı yazı boyutunu küçültme */
+        margin-top: 10px; /* Bağlantı üst boşluğunu ayarlama */
+    }
+}
+
+/* Küçük Ekranlar (Telefon) */
+@media (max-width: 767px) {
+    .schedule .single-schedule {
+        width: 100%; /* Bileşenleri tam genişlikte sıralamak için %100 genişlik */
+        margin-bottom: 15px; /* Bileşenler arasındaki boşluğu ayarladık */
+    }
+    .schedule .single-schedule .icon i {
+        font-size: 10px; /* Simgelerin boyutunu daha da küçültme */
+        margin-bottom: 2px; /* Simge alt boşluğunu ayarlama */
+    }
+    .schedule .single-schedule h4 {
+        font-size: 10px; /* Başlık yazı boyutunu küçültme */
+        margin-top: 2px; /* Başlık üst boşluğunu ayarlama */
+    }
+    .schedule .single-schedule p {
+        font-size: 8px; /* Paragraf yazı boyutunu küçültme */
+        margin-top: 2px; /* Paragraf üst boşluğunu ayarlama */
+    }
+    .schedule .single-schedule a {
+        font-size: 8px; /* Bağlantı yazı boyutunu küçültme */
+        margin-top: 4px; /* Bağlantı üst boşluğunu ayarlama */
+    }
+} 
+
+
 /*=============================
 	End Schedule CSS
 ===============================*/
@@ -914,419 +1038,8 @@ body{
 	End Feautes CSS
 ===============================*/
 
-/*=======================
-	Start Fun Facts CSS
-=========================*/
-.fun-facts{
-	position:relative;
-}
-.fun-facts.section{
-	padding:120px 0;
-}
-.fun-facts{
-	background:url('img/fun-bg.jpg');
-	background-size:cover;
-	background-repeat:no-repeat;
-}
-.fun-facts .single-fun {
-	
-}
-.fun-facts .single-fun i {
-	position: absolute;
-	left: 0;
-	font-size: 62px;
-	color: #fff;
-	height: 70px;
-	width: 70px;
-	line-height: 67px;
-	font-size: 28px;
-	text-align: center;
-	padding: 0;
-	margin: 0;
-	border: 2px solid #fff;
-	border-radius: 0px;
-	top: 50%;
-	margin-top: -35px;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	border-radius: 50%;
-}
-.fun-facts .single-fun:hover i{
-	color:#1A76D1;
-	background:#fff;
-	border-color:transparent;
-}
-.fun-facts .single-fun .content {
-	padding-left: 80px;
-}
-.fun-facts .single-fun span {
-	color: #fff;
-	font-weight: 600;
-	font-size: 30px;
-	position: relative;
-	display: block;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s eas;
-	display: block;
-	margin-bottom: 7px;
-}
-.fun-facts .single-fun p{
-	color:#fff;
-	font-size:15px;
-}
-/*===================
-	End Fun Facts
-=====================*/
 
-/*===================
-	Why choose CSS
-=====================*/
-.why-choose .choose-left h3{
-	font-size:24px;
-	font-weight:600;
-	color:#2C2D3F;
-	position:relative;
-	padding-bottom:20px;
-	margin-bottom:24px;
-}
-.why-choose .choose-left h3:before{
-	position:absolute;
-	content:"";
-	left:0;
-	bottom:0;
-	height:2px;
-	width:50px;
-	background:#1a76d1;
-}
-.why-choose .choose-left p{
-	margin-bottom:35px;
-}
-.why-choose .choose-left .list{}
-.why-choose .choose-left .list li {
-	color: #868686;
-	margin-bottom: 12px;
-}
-.why-choose .choose-left .list li:last-child{
-	margin-bottom:0px;
-}
-.why-choose .choose-left .list li i{
-	height:15px;
-	width:15px;
-	line-height:15px;
-	text-align:center;
-	background:#1a76d1;
-	color:#fff;
-	font-size:14px;
-	border-radius:100%;
-	padding-left:2px;
-	margin-right:16px;
-}
-/* Start Faq CSS */
-.why-choose{
-	background:#fff;
-}
-.why-choose .choose-right{
-	height:100%;
-	width:100%;
-	background-image:url('img/video-bg.jpg');
-	background-size:cover;
-	background-position:center;
-	background-repeat:no-repeat;
-	position:relative;
-}
-.why-choose .choose-right .video {
-	color: #fff;
-	height: 70px;
-	width: 70px;
-	line-height: 70px;
-	text-align: center;
-	border-radius: 100%;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin-left: -35px;
-	margin-top: -35px;
-	font-size: 21px;
-	background: #1a76d1;
-	padding-left: 4px;
-}
-.why-choose .choose-right .video:hover{
-	transform:scale(1.1);
-}
-.why-choose .video-image .waves-block .waves {
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	background: #fff;
-	opacity: 0;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	border-radius: 100%;
-	-webkit-animation: waves 3s ease-in-out infinite;
-	animation: waves 3s ease-in-out infinite;
-	left: 50%;
-	margin-left: -100px;
-	top: 50%;
-	margin-top: -100px;
-}
-.why-choose .video-image .waves-block .wave-1 {
-    -webkit-animation-delay: 0s;
-    animation-delay: 0s;
-}
-.why-choose .video-image .waves-block .wave-2 {
-    -webkit-animation-delay: 1s;
-    animation-delay: 1s;
-}
-.why-choose .video-image .waves-block .wave-3 {
-    -webkit-animation-delay: 2s;
-    animation-delay: 2s;
-}
-/*=======================
-	End Why choose CSS
-=========================*/
 
-/*===============================
-	Start Call to action CSS
-=================================*/
-.call-action{
-	background-image:url('img/call-bg.jpg');
-	background-size:cover;
-	background-position:center;
-	position:relative;
-	background-repeat:no-repeat;
-}
-.call-action .content{
-	text-align:center;
-	padding:100px 265px;
-}
-.call-action .content h2{
-	color:#fff;
-	font-size:32px;
-	font-weight:600;
-	line-height:46px;
-}
-.call-action .content p {
-	color: #fff;
-	margin: 30px 0px;
-	font-size: 15px;
-}
-.call-action .content .btn{
-	background:#fff;
-	margin-right:20px;
-	font-weight:500;
-	border:1px solid #fff;
-	color:#1a76d1;
-}
-.call-action .content .btn:before{
-	background:#1A76D1;
-}
-.call-action .content .btn:hover{
-	background:#1A76D1;
-	color:#fff;
-}
-.call-action .content .btn:last-child{
-	margin-right:0px;
-}
-.call-action .content .second {
-	border: 1px solid #fff;
-	color: #fff;
-	background: transparent;
-	color: #fff !important;
-}
-.call-action .content .second:before{
-	background:#fff;
-}
-.call-action .content .second:hover{
-	color:#1A76D1;
-	border-color:transparent;
-	background:#fff;
-}
-.call-action .content .second i{
-	margin-left:10px;
-}
-/*===============================
-	Start Call to action CSS
-=================================*/
-
-/*==========================
-	Start Portfolio CSS
-============================*/
-.portfolio{
-	background:#FDFDFD;
-}
-.portfolio .single-pf{
-	position:relative;
-}
-.portfolio .single-pf img{
-	height:100%;
-	width:100%;
-}
-.portfolio .single-pf:before{
-	position:absolute;
-	content:"";
-	left:0;
-	top:0;
-	height:100%;
-	width:100%;
-	background:#1a76d1;
-	opacity:0;
-	visibility:hidden;
-	-webkit-transition:all 0.4s ease;
-	-moz-transition:all 0.4s ease;
-	transition:all 0.4s ease;
-	z-index:1;
-}
-.portfolio .single-pf:hover:before{
-	opacity:0.7;
-	visibility:visible;
-}
-.portfolio .single-pf .btn {
-	color: #1a76d1;
-	z-index: 3;
-	background: #fff;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	border-radius: 0px;
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	height: 48px;
-	width: 150px;
-	text-align: center;
-	line-height: 48px;
-	padding: 0;
-	font-weight: 500;
-	font-size: 14px;
-	margin-left: -75px;
-	margin-top: -24px;
-	border-radius:4px;
-}
-.portfolio .single-pf:hover .btn{
-	opacity:1;
-	visibility:visible;
-}
-.portfolio .single-pf .btn:hover{
-	color:#fff;
-}
-.portfolio .owl-nav{
-	display:none;
-}
-/* Slider Nav */
-.pf-details .image-slider .owl-nav{
-	margin: 0;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-	margin-top:-25px;
-}
-.pf-details .image-slider .owl-carousel .owl-nav div {
-	height: 50px;
-	width: 50px;
-	line-height: 45px;
-	background: #fff;
-	color: #1A76D1;
-	position: absolute;
-	margin: 0;
-	border-radius: 100%;
-	font-size: 20px;
-	text-align: center;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	box-shadow: 0px 0px 10px #0000001a;
-}
-.pf-details .image-slider .owl-carousel .owl-nav div:hover{
-	color:#fff;
-	background:#1A76D1;
-}
-.pf-details .image-slider .owl-carousel .owl-controls .owl-nav .owl-prev{
-	left:20px;
-}
-.pf-details .image-slider .owl-carousel .owl-controls .owl-nav .owl-next{
-	right:20px;
-}
-.pf-details .image-slider{
-	border-radius:8px 8px 0 0;
-}
-.pf-details .image-slider img{
-	height:100%;
-	width:100%;
-}
-.pf-details .date{
-	background: #1a76d1;
-	display: block;
-	padding: 20px;
-	text-align: center;
-	border-radius: 0;
-	border: none;
-	margin: 0;
-	margin-top: -1px;
-}
-.pf-details .date ul li{
-	font-size:16px;
-	color:#fff;
-	display:inline-block;
-	margin-right:60px;
-}
-.pf-details .date ul li:last-child{
-	margin:0;
-}
-.pf-details .date ul li span{
-	font-weight:500;
-	display:inline-block;
-	margin-right:5px;
-}
-.pf-details .body-text{}
-.pf-details .body-text h3 {
-	font-size: 30px;
-	font-weight: 600;
-	color: #333;
-	margin-top: 40px;
-}
-.pf-details .body-text p{
-	margin-top:20px;
-}
-.pf-details .body-text .share{
-	margin-top:40px;
-}
-.pf-details .body-text .share h4 {
-	font-size: 15px;
-	font-weight: 500;
-	display: inline-block;
-}
-.pf-details .body-text .share ul{
-	display:inline-block;
-	margin-left:12px;
-}
-.pf-details .body-text .share ul li{
-	display:inline-block;
-	margin-right:10px;
-}
-.pf-details .body-text .share ul li:last-child{
-	margin-right:0;
-}
-.pf-details .body-text .share ul li a{
-	height:35px;
-	width:35px;
-	line-height:35px;
-	text-align:center;
-	border:1px solid #C8C8C8;
-	color:#757575;
-	display:block;
-	border-radius:50%;
-}
-.pf-details .body-text .share ul li a:hover{
-	color:#fff;
-	border-color:transparent;
-	background:#1A76D1;
-}
-/*==========================
-	End Portfolio CSS
-============================*/
 
 /*=========================
 	Srart service CSS
@@ -1631,126 +1344,62 @@ body{
 	End Departments CSS
 ============================*/
 
-/*=============================
-	Start Pricing Table CSS
-===============================*/
-.pricing-table{
-	background:#f9f9f9;
-	position:relative;
-}
-.pricing-table .single-table {
-	background: #fff;
-	border:1px solid #ddd;
-	text-align: center;
-	position: relative;
-	overflow: hidden;
-	margin: 15px 0;
-	padding:45px 35px 30px 35px;
-}
-/* Table Head */
-.pricing-table .single-table .table-head {
-	text-align:center;
-}
-.pricing-table .single-table .icon i{
-	font-size:65px;
-	color:#1a76d1;
-}
-.pricing-table .single-table .title {
-	font-size: 21px;
-	color: #2C2D3F;
-	margin-top: 30px;
-	margin-bottom: 15px;
-}
-.pricing-table .single-table .amount {
-	font-size:36px;
-	font-weight:600;
-	color:#1a76d1;
-}
-.pricing-table .single-table .amount span{
-	display:inline-block;
-	font-size:14px;
-	font-weight:400;
-	color:#868686;
-	margin-left:8px;
-}
-/* Table List */
-.pricing-table .single-table .table-list {
-	padding: 10px 0;
-	text-align: left;
-	margin-top: 30px;
-}
-.pricing-table .table-list li {
-	position: relative;
-	color: #666;
-	text-transform: capitalize;
-	margin-bottom: 18px;
-	padding-right: 32px;
-}
-.pricing-table .table-list li:last-child{
-	margin-bottom:0px;
-}
-.pricing-table .table-list li.cross i{
-	background:#aaaaaa;
-}
-.pricing-table .table-list i {
-	font-size: 7px;
-	text-align: center;
-	margin-right: 10px;
-	position: absolute;
-	right: 0;
-	height: 16px;
-	width: 16px;
-	line-height: 16px;
-	text-align: center;
-	color: #fff;
-	background: #1a76d1;
-	border-radius: 100%;
-	padding-left: 1px;
-}
-
-/* Table Bottom */
-.pricing-table .table-bottom {
-	margin-top: 25px;
-}
-.pricing-table .btn {
-	padding: 12px 25px;
-	width: 100%;
-	color:#fff;
-}
-.pricing-table .btn:before{
-	background:#2C2D3F;
-}
-.pricing-table .btn:hover{
-	color:#fff;
-}
-.pricing-table .btn i {
-	font-size: 16px;
-	margin-right: 10px;
-}
-/*=============================
-	End Pricing Table CSS
-===============================*/
 
 /*========================
 	Start Clients CSS
 ==========================*/
-.clients{
-	background-image:url('img/client-bg.jpg');
-	background-size:cover;
-	background-position:center;
-	padding:100px 0px;
-	position:relative;
+/* Clients section background and padding */
+/* Clients section background and padding */
+.clients {
+	background-image: url('img/client-bg.jpg');
+	background-size: cover;
+	background-position: center;
+	padding: 50px 0; /* Padding miktarını mobil uyumluluk için azalttık */
+	position: relative;
 }
-.clients .single-clients{
-	
+
+	/* Client logos container */
+	.clients .owl-carousel {
+		display: flex;
+		flex-wrap: nowrap; /* Logoların tek satırda kalmasını sağlar */
+		overflow-x: auto; /* Yatay kaydırma için */
+		padding: 0 10px; /* Kaydırma için yatay boşluk */
+	}
+
+	/* Single client styling */
+	.clients .single-clients {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex: 0 0 auto; /* Flex item boyutunun otomatik ayarlanmasını sağlar */
+		margin: 0 10px; /* Logolar arasında boşluk */
+	}
+
+		/* Client logos styling */
+		.clients .single-clients img {
+			width: 80%; /* Genel boyutu küçültme */
+			max-width: 120px; /* En fazla 120px genişlik */
+			height: auto; /* Orantılı yükseklik */
+			cursor: pointer;
+		}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+	.clients .owl-carousel {
+		flex-wrap: wrap; /* Kucuk ekranlarda logoları sarmala */
+	}
+
+	.clients .single-clients {
+		flex: 0 0 33.333%; /* Her logo için genişlik %33.333 olacak şekilde ayarlandı */
+		margin: 5px; /* Mobil ekranlarda daha küçük boşluk */
+	}
+
+		.clients .single-clients img {
+			width: 100%; /* Mobil ekranlarda logoların genişliği tüm sütunu kaplasın */
+			max-width: 100px; /* Mobil ekranlar için maksimum genişlik */
+		}
 }
-.clients .single-clients img {
-	width: 100%;
-	cursor: pointer;
-	text-align: center;
-	float: none;
-	padding: 0 35px;
-}
+
 /*========================
 	End Clients CSS
 ==========================*/
@@ -1868,144 +1517,7 @@ body{
 .team .t-bottom h2 a:hover{
 	color:#1A76D1;
 }
-/*-- Doctor Details --*/
-.doctor-details-left {
-	-webkit-box-shadow: 0px 0px 10px 0px #ddd;
-	box-shadow: 0px 0px 10px 0px #ddd;
-	border-radius: 10px;
-	overflow: hidden;
-}
-.doctor-details-item img {
-  width: 100%;
-  border-radius:0;
-}
-.doctor-details-item .doctor-details-contact {
-	padding: 50px;
-}
-.doctor-details-item .doctor-details-contact h3 {
-	font-weight: 600;
-	font-size: 20px;
-	color: #2C2D3F;
-	margin-bottom: 30px;
-}
-.doctor-details-item .doctor-details-contact .basic-info {
-  margin: 0;
-  padding: 0;
-}
-.doctor-details-item .doctor-details-contact .basic-info li {
-	list-style-type: none;
-	display: block;
-	font-weight: 400;
-	font-size: 15px;
-	color: #2C2D3F;
-	margin-bottom: 10px;
-}
-.doctor-details-item .doctor-details-contact .basic-info li:last-child {
-  margin-bottom: 0;
-}
-.doctor-details-item .doctor-details-contact .basic-info li i {
-	display: inline-block;
-	color: #1A76D1;
-	margin-right: 8px;
-	font-size: 16px;
-	position: relative;
-	top: 1px;
-}
-.doctor-details-area .doctor-details-left .social{
-	margin-top:25px;
-}
-.doctor-details-area .doctor-details-left .social li{
-	display:inline-block;
-	margin-right:10px;
-}
-.doctor-details-area .doctor-details-left .social li:last-child{
-	margin-right:0px;
-}
-.doctor-details-area .doctor-details-left .social li a {
-	height: 34px;
-	width: 34px;
-	line-height: 34px;
-	text-align: center;
-	border: 1px solid #C8C8C8;
-	text-align: center;
-	padding: 0;
-	border-radius: 4px;
-	display: block;
-	color: #757575;
-	font-size: 16px;
-}
-.doctor-details-area .doctor-details-left .social li a:hover{
-	color:#fff;
-	background:#1A76D1;
-	border-color:transparent;
-}
-.doctor-details-item .doctor-details-work h3 {
-	font-weight: 600;
-	font-size: 20px;
-	color: #2C2D3F;
-	margin-top: 30px;
-}
-.doctor-details-item .doctor-details-work .time-sidual{
-	
-}
-.doctor-details-item .doctor-details-work .time-sidual{
-	overflow:hidden;
-}
-.doctor-details-item .doctor-details-work .time-sidual li {
-	display: block;
-	color: #2C2D3F;
-	width: 100%;
-	margin-bottom: 10px;
-}
-.doctor-details-item .doctor-details-work .time-sidual li span{
-	display:inline-block;
-	float:right;
-}
-.doctor-details-item .doctor-details-work .day-head .time {
-	font-weight: 400;
-	float: right;
-}
 
-.doctor-details-area .doctor-details-right{
-	padding-left: 60px;
-	padding-top: 70px;
-}
-.doctor-details-item .doctor-details-biography {
- 
-}
-.doctor-details-item .doctor-details-biography h3 {
-  font-weight: 600;
-  font-size: 24px;
-  color: #2f60bd;
-  margin-bottom: 25px;
-  margin-top: 25px;
-}
-.doctor-details-item .doctor-details-biography p {
-  margin-bottom: 0;
-}
-.doctor-details-item .doctor-details-biography ul {
-  margin: 0;
-  padding: 0;
-}
-.doctor-details-item .doctor-details-biography ul li {
-  list-style-type: none;
-  display: block;
-  margin-bottom: 10px;
-}
-.doctor-details-item .doctor-details-biography ul li:last-child {
-  margin-bottom: 0;
-}
-.doctor-details-item .doctor-name .name{
-	font-size:30px;
-	font-weight:600;
-}
-.doctor-details-item .doctor-name .deg {
-	font-size: 22px;
-	margin: 10px 0 5px 0;
-}
-.doctor-details-item .doctor-name .degree{
-	font-size: 16px;
-}
 /*====================
 	End Team CSS
 ======================*/ 
@@ -2293,7 +1805,7 @@ body{
 /* News Single */
 .news-single {
 	padding: 60px 0 90px;
-	background: #f8f8f8;
+	background: #fff;
 }
 .news-single .single-main {
 	margin-top: 30px;
@@ -2321,8 +1833,8 @@ body{
 	color: #1A76D1;
 }
 /* Blog Meta */
-.news-single{
-	background:#fff;
+.news-single {
+	background: #F9F5F6;
 }
 .news-single .meta {
 	overflow: hidden;
@@ -2732,448 +2244,6 @@ body{
 /*===================
 	End Blog CSS
 =====================*/
-
-/*==========================
-	Start Appointment CSS
-============================*/
-.appointment{
-	background:#fff;
-	padding-top:100px;
-}
-.appointment.single-page {
-	background: #fff;
-	padding-top: 100px 0;
-	padding: 0;
-	padding: 100px 0;
-}
-.appointment.single-page .appointment-inner {
-	padding: 40px;
-	box-shadow: 0px 0px 10px #00000024;
-	border-radius: 5px;
-}
-.appointment.single-page .title{}
-.appointment.single-page .title h3 {
-	font-size: 25px;
-	display: block;
-	margin-bottom: 10px;
-	font-weight:600;
-}
-.appointment.single-page .title p{}
-.appointment .form{
-	margin-top:30px;
-}
-.appointment .form .form-group{}
-.appointment .form input {
-	width: 100%;
-	height: 50px;
-	border: 1px solid #eee;
-	text-transform: capitalize;
-	padding: 0px 18px;
-	color: #555;
-	font-size: 14px;
-	font-weight:400;
-	border-radius:0;
-	border-radius: 4px;
-}
-.appointment .form textarea{
-	width: 100%;
-	height:200px;
-    padding: 18px;
-	border:1px solid #eee;
-	text-transform:capitalize;
-	resize:none;
-	border-radius: 4px;
-}
-.appointment .form-group .nice-select{
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	border: 1px solid #eee;
-	text-transform: capitalize;
-	padding: 0px 18px;
-	color: #999;
-	font-size: 14px;
-	font-weight:400;
-	border-radius: 4px;
-	font-weight:400;
-}
-.appointment .form-group .nice-select::after {
-	right: 20px;
-	color: #757575;
-}
-.appointment .form-group .list{
-	border-radius: 4px;
-}
-.appointment .form-group .list li{
-	color:#757575;
-	border-radius:0;
-}
-.appointment .form-group .list li.selected{
-	color:#757575;
-	font-weight:400;
-}
-.appointment .form-group .list li:hover {
-	color:#fff;
-	background: #1A76D1;
-}
-.appointment .appointment-image{}
-.appointment.single-page .button .btn{
-	width:100%;
-}
-.appointment .button .btn{
-	font-weight:500;
-}
-.appointment .button .btn:hover{
-	color:#fff;
-}
-.appointment .form p{
-	margin-top: 10px;
-	color:#868686;
-}
-.appointment.single-page .work-hour{
-	background:#1A76D1;
-	padding: 40px;
-	box-shadow: 0px 0px 10px #00000024;
-	border-radius: 5px;
-}
-.appointment.single-page .work-hour h3 {
-	font-size: 25px;
-	display: block;
-	font-weight:600;
-	margin-bottom: 20px;
-	color:#fff;
-}
-.appointment.single-page .time-sidual{
-	margin-top:15px;
-}
-.appointment.single-page .time-sidual{
-	overflow:hidden;
-}
-.appointment.single-page .time-sidual li {
-	display: block;
-	color: #fff;
-	width: 100%;
-	margin-bottom: 10px;
-}
-.appointment.single-page .time-sidual li span{
-	display:inline-block;
-	float:right;
-}
-.appointment.single-page .day-head .time {
-	font-weight: 400;
-	float: right;
-}
-/*==========================
-	End Appointment CSS
-============================*/
-
-/*====================
-   Start Login CSS
-======================*/
-.login .inner{
-	box-shadow: 0px 0px 10px #00000024;
-	border-radius: 5px;
-	overflow:hidden;
-}
-.login .login-left{
-	background-image: url(img/signup-bg.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-.login .login-form{
-	padding:50px 40px;
-}
-.login .login-form h2 {
-	position: relative;
-	font-size: 32px;
-	color: #333;
-	font-weight: 600;
-	line-height: 27px;
-	text-transform: capitalize;
-	margin-bottom: 12px;
-	padding-bottom: 20px;
-	text-align: left;
-}
-.login .login-form h2:before{
-	position:absolute;
-	content:"";
-	left:0;
-	bottom:0;
-	height:2px;
-	width:50px;
-	background:#1A76D1;
-}
-.login .login-form p {
-	font-size: 14px;
-	color: #333;
-	font-weight: 400;
-	text-align: left;
-	margin-bottom:50px;
-}
-.login .login-form p a{
-	display:inline-block;
-	margin-left:5px;
-	color:#1A76D1;
-}
-.login .login-form p a:hover{
-	color:#2C2D3F;
-}
-.login .form {
-	margin-top: 30px;
-}
-.login .form .form-group {
-	margin-bottom: 22px;
-}
-.login .form .form-group input {
-	width: 100%;
-	height: 50px;
-	border: 1px solid #eee;
-	text-transform: capitalize;
-	padding: 0px 18px;
-	color: #555;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 4px;
-}
-.login .form .form-group.login-btn {
-	margin: 0;
-}
-.login .form button {
-	border: none;
-}
-.login .form .btn {
-	display: inline-block;
-	margin-right: 10px;
-	color: #fff;
-	line-height: 20px;
-	width:100%;
-}
-.login .form .btn:hover{
-	background:#1A76D1;
-	color:#fff;
-}
-.login .login-form .checkbox {
-	text-align: left;
-	margin: 0;
-	margin-top: 20px;
-	display:inline-block;
-	
-}
-.login .login-form .checkbox label {
-	font-size: 14px;
-	font-weight: 400;
-	color: #333;
-	position: relative;
-	padding-left: 20px;
-}
-.login .login-form .checkbox label:hover{
-	cursor:pointer;
-}
-.login .login-form .checkbox label input{
-	display:none;
-}
-.login .login-form .checkbox label::before {
-	position: absolute;
-	content: "";
-	left: 0;
-	top: 5px;
-	width: 15px;
-	height: 15px;
-	border: 1px solid #1A76D1;
-	border-radius: 100%;
-}
-.login .login-form .checkbox label::after {
-	position: relative;
-	content: "";
-	width: 7px;
-	height: 7px;
-	left: -16px;
-	top: -15px;
-	opacity: 0;
-	visibility: hidden;
-	transform: scale(0);
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	display: block;
-	font-size: 9px;
-	background: #1A76D1;
-	border-radius: 100%;
-}
-.login .login-form .checkbox label.checked::after{
-	opacity:1;
-	visibility:visible;
-	transform:scale(1);
-}
-.login .login-form .lost-pass{
-	display:inline-block;
-	margin-left:25px;
-	color:#333;
-	font-size:14px;
-	font-weight:400;
-}
-.login .login-form .lost-pass:hover{
-	color:#1A76D1;
-}
-/*====================
-   End Login CSS
-======================*/
-
-/*=========================
-   Start Register CSS
-===========================*/
-.register .inner{
-	box-shadow: 0px 0px 10px #00000024;
-	border-radius: 5px;
-	overflow:hidden;
-}
-.register .register-left{
-	background-image: url(img/signup-bg.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-}
-.register .register-form{
-	padding:50px 40px;
-}
-.register .register-form h2 {
-	position: relative;
-	font-size: 32px;
-	color: #333;
-	font-weight: 600;
-	line-height: 27px;
-	text-transform: capitalize;
-	margin-bottom: 12px;
-	padding-bottom: 20px;
-	text-align: left;
-}
-.register .register-form h2:before{
-	position:absolute;
-	content:"";
-	left:0;
-	bottom:0;
-	height:2px;
-	width:50px;
-	background:#1A76D1;
-}
-.register .register-form p {
-	font-size: 14px;
-	color: #333;
-	font-weight: 400;
-	text-align: left;
-	margin-bottom:50px;
-}
-.register .register-form p a{
-	display:inline-block;
-	margin-left:5px;
-	color:#1A76D1;
-}
-.register .register-form p a:hover{
-	color:#2C2D3F;
-}
-.register .form {
-	margin-top: 30px;
-}
-.register .form .form-group {
-	margin-bottom: 22px;
-}
-.register .form .form-group input {
-	width: 100%;
-	height: 50px;
-	border: 1px solid #eee;
-	text-transform: capitalize;
-	padding: 0px 18px;
-	color: #555;
-	font-size: 14px;
-	font-weight: 400;
-	border-radius: 4px;
-}
-.register .form .form-group.login-btn {
-	margin: 0;
-}
-.register .form button {
-	border: none;
-}
-.register .form .btn {
-	display: inline-block;
-	margin-right: 10px;
-	color: #fff;
-	line-height: 20px;
-	width:100%;
-}
-.register .form .btn:hover{
-	background:#1A76D1;
-	color:#fff;
-}
-.register .register-form .checkbox {
-	text-align: left;
-	margin: 0;
-	margin-top: 20px;
-	display:inline-block;
-	
-}
-.register .register-form .checkbox label {
-	font-size: 14px;
-	font-weight: 400;
-	color: #333;
-	position: relative;
-	padding-left: 20px;
-}
-.register .register-form .checkbox label:hover{
-	cursor:pointer;
-}
-.register .register-form .checkbox label input{
-	display:none;
-}
-.register .register-form .checkbox label::before {
-	position: absolute;
-	content: "";
-	left: 0;
-	top: 5px;
-	width: 15px;
-	height: 15px;
-	border: 1px solid #1A76D1;
-	border-radius: 100%;
-}
-.register .register-form .checkbox label::after {
-	position: relative;
-	content: "";
-	width: 7px;
-	height: 7px;
-	left: -16px;
-	top: -15px;
-	opacity: 0;
-	visibility: hidden;
-	transform: scale(0);
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-	display: block;
-	font-size: 9px;
-	background: #1A76D1;
-	border-radius: 100%;
-}
-.register .register-form .checkbox label.checked::after{
-	opacity:1;
-	visibility:visible;
-	transform:scale(1);
-}
-.register .register-form  .terms{
-	display:inline-block;
-	margin-left:5px;
-	color:#1A76D1;
-}
-.register .register-form .terms:hover{
-	color:#2C2D3F;
-}
-/*=========================
-   End Register CSS
-===========================*/
 
 /*=====================
    Start Faq CSS
@@ -4622,24 +3692,24 @@ body{
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+
 }
 
 .project-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1400px; /* Kart genişliğini artırma */
-    padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 auto 30px; /* Alt boşluğu artırma */
-    position: relative;
-    text-align: left;
-    height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
-    min-height: 170px; /* Minimum yüksekliği belirleme */
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 15px;
+	background-color: #F9F5F6;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	margin: 0 auto 30px; /* Alt boşluğu artırma */
+	position: relative;
+	text-align: left;
+	height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
+	min-height: 170px; /* Minimum yüksekliği belirleme */
 }
 
 .project-card:last-child {
@@ -4696,6 +3766,100 @@ body{
 
 
 
+/* Mobil ve Küçük Ekranlar İçin Duyarlı Tasarım */
+@media (max-width: 768px) {
+	/* Genel Ayarlar */
+	.news-single .single-main {
+		padding: 15px;
+	}
+
+	.news-single .news-title {
+		font-size: 20px;
+	}
+
+	.news-single .meta span, .news-single .meta span a {
+		font-size: 12px;
+	}
+
+	.news-single .meta-left .author img {
+		width: 35px;
+		height: 35px;
+	}
+
+	.news-single .news-text p {
+		font-size: 12px;
+	}
+
+	/* Proje Kartları */
+	.project-card {
+		padding: 10px;
+		min-height: 150px;
+	}
+
+	.project-card-title {
+		font-size: 18px;
+	}
+
+	.project-card-tech {
+		font-size: 14px;
+	}
+
+
+
+	/* Proje Listesi ve Diğer Elemanlar */
+	.project-list {
+		padding: 20px;
+	}
+
+	.project-title {
+		font-size: 22px;
+	}
+
+	.project-description, .project-text, .project-subtitle {
+		font-size: 16px;
+	}
+
+	.project-link a {
+		font-size: 16px;
+		padding: 8px 12px;
+	}
+
+	/* Görseller */
+	.news-single .news-head img {
+		height: auto;
+	}
+
+	.project-card-logo img {
+		width: 40px;
+	}
+
+	/* Metin Boyutları */
+	.news-single .news-content p {
+		font-size: 13px;
+	}
+
+	/* Proje Kartlarındaki Logo Alanı */
+	.project-card-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.project-card-logo {
+		margin-top: 10px;
+	}
+
+	/* Proje Kartı Bağlantısı */
+	.project-card-link {
+		font-size: 12px;
+		bottom: 8px;
+		right: 10px;
+		padding: 6px 10px;
+	}
+	/* Butonlarla yazılar arasında boşluk ekleme */
+
+
+
+}
 
 
 
@@ -4704,21 +3868,21 @@ body{
 ===========================*/
 
 .project-card1 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1400px; /* Kart genişliğini artırma */
-    padding: 15px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 auto 30px; /* Alt boşluğu artırma */
-    position: relative;
-    text-align: left;
-    height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
-    min-height: 150px; /* Minimum yüksekliği belirleme */
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 1400px; /* Kart genişliğini artırma */
+	padding: 15px;
+	background-color: #F9F5F6;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	margin: 0 auto 30px; /* Alt boşluğu artırma */
+	position: relative;
+	text-align: left;
+	height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
+	min-height: 150px; /* Minimum yüksekliği belirleme */
 }
 
 .project-card1:last-child {
@@ -4769,4 +3933,101 @@ body{
 .project-card1-link:hover {
     background-color: #1e90ff;
     color: #ffffff;
+}
+
+
+/* Mobil ve Küçük Ekranlar İçin Duyarlı Tasarım */
+@media (max-width: 768px) {
+	/* Genel Ayarlar */
+	.news-single .single-main {
+		padding: 15px;
+	}
+
+	.news-single .news-title {
+		font-size: 20px;
+	}
+
+	.news-single .meta span, .news-single .meta span a {
+		font-size: 12px;
+	}
+
+	.news-single .meta-left .author img {
+		width: 35px;
+		height: 35px;
+	}
+
+	.news-single .news-text p {
+		font-size: 12px;
+	}
+
+	/* Proje Kartları */
+	.project-card1 {
+		padding: 10px;
+		min-height: 150px;
+	}
+
+	.project-card1-title {
+		font-size: 18px;
+	}
+
+	.project-card1-tech {
+		font-size: 14px;
+
+	}
+
+
+
+	/* Proje Listesi ve Diğer Elemanlar */
+	.project-list1 {
+		padding: 20px;
+	}
+
+	.project-title {
+		font-size: 22px;
+	}
+
+	.project-description, .project-text, .project-subtitle {
+		font-size: 16px;
+	}
+
+	.project-link a {
+		font-size: 16px;
+		padding: 8px 12px;
+	}
+
+	/* Görseller */
+	.news-single .news-head img {
+		height: auto;
+	}
+
+	.project-card-logo img {
+		width: 40px;
+	}
+
+	/* Metin Boyutları */
+	.news-single .news-content p {
+		font-size: 13px;
+	}
+
+	/* Proje Kartlarındaki Logo Alanı */
+	.project-card1-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.project-card-1logo {
+		margin-top: 10px;
+	}
+
+	/* Proje Kartı Bağlantısı */
+	.project-card1-link {
+		font-size: 12px;
+		bottom: 8px;
+		right: 10px;
+		padding: 6px 10px;
+	}
+	/* Butonlarla yazılar arasında boşluk ekleme */
+
+
+
 }

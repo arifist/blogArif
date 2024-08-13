@@ -33,6 +33,9 @@ router.get("/project12",userController.project12);
 
 router.get("/project13",userController.project13);
 
+router.get("/project14",userController.project14);
+
+
 router.get("/experiences",userController.experiences);
 
 router.get("/certificates",userController.certificates);
@@ -79,6 +82,7 @@ router.get("/sertifika8",userController.sertifika8);
 
 router.get("/sertifika9",userController.sertifika9);
 
+router.get("/sertifika10",userController.sertifika10);
 
 
 module.exports=router;

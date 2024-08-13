@@ -78,7 +78,10 @@ exports.project13=(req,res,next)=>{
 
     res.render("user/project13");
 }
+exports.project14=(req,res,next)=>{  
 
+  res.render("user/project14");
+}
 
 
 exports.experiences=(req,res,next)=>{  
@@ -356,4 +359,9 @@ exports.sertifika9=(req,res,next)=>{
 
     const file = 'D:/yazilim/web/Blog/public/downloads/cisco.pdf';
     res.download(file);
+}
+exports.sertifika10=(req,res,next)=>{  
+
+  const file = 'D:/yazilim/web/Blog/public/downloads/mvc.pdf';
+  res.download(file);
 }
