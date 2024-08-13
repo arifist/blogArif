@@ -26,6 +26,6 @@ app.use(express.static(path.join(__dirname,"node_modules")))
 const authRouter=require("./routes/user");
 app.use("/", authRouter);
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
   console.log("server running");
 });
