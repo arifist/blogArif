@@ -151,7 +151,7 @@ body{
 
 /* Kitap Öğesi */
 .book-item {
-	background-color: #F5F5F5;
+	background-color: #D1E9F6;
 	padding: 20px;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -561,6 +561,8 @@ body{
 	box-shadow:0px 0px 13px #00000054;
 }
 
+
+
 /* media kısmı */
 
 /* Responsive Media Query */
@@ -575,6 +577,7 @@ body{
         line-height: 35px;
         font-size: 13px;
     }
+
 }
 
 
@@ -626,6 +629,10 @@ body{
     .header .nav li:hover .dropdown {
         top: auto;
     }
+	.header-inner .logo img {
+		max-width: 92%; /* Logonun genişliğini %80 yaparak küçültür */
+		height: auto; /* Orantılı yüksekliği korur */
+	}
 }
 
 /*=========================
@@ -760,7 +767,7 @@ body{
         text-align: center; /* Butonları ortalamak için */
     }
     .slider .single-slider .btn {
-        font-size: 11px !important; /* Buton yazı boyutunu küçültme */
+        font-size: 13px !important; /* Buton yazı boyutunu küçültme */
         padding: 4px 8px !important; /* Buton boyutunu küçültme */
         margin: 0 5px; /* Butonlar arasındaki boşluğu azaltma ve yan yana gelmelerini sağlama */
     }
@@ -1384,21 +1391,26 @@ body{
 		}
 
 /* Responsive adjustments for mobile screens */
+/* Responsive Client Logos */
 @media (max-width: 768px) {
-	.clients .owl-carousel {
-		flex-wrap: wrap; /* Kucuk ekranlarda logoları sarmala */
+	.clients-slider {
+		display: flex;
+		flex-wrap: nowrap; /* Yatay olarak taşmasını sağlar */
+		overflow-x: auto; /* Yatay kaydırma sağlar */
+		padding: 10px 0; /* Üst ve alt boşluk */
 	}
 
-	.clients .single-clients {
-		flex: 0 0 33.333%; /* Her logo için genişlik %33.333 olacak şekilde ayarlandı */
-		margin: 5px; /* Mobil ekranlarda daha küçük boşluk */
-	}
-
-		.clients .single-clients img {
-			width: 100%; /* Mobil ekranlarda logoların genişliği tüm sütunu kaplasın */
-			max-width: 100px; /* Mobil ekranlar için maksimum genişlik */
+		.clients-slider .single-clients {
+			flex: 0 0 auto; /* Elemanların esnemesini engeller ve boyutlarını korur */
+			margin: 0 10px; /* Her bir logo arasında boşluk sağlar */
 		}
+
+			.clients-slider .single-clients img {
+				max-width: 70px; /* Logoların maksimum genişliğini ayarlar */
+				height: auto; /* Yüksekliği orantılı olarak ayarlar */
+			}
 }
+
 
 /*========================
 	End Clients CSS
@@ -2241,6 +2253,8 @@ body{
 	-moz-transition:all 0.3s ease 0s;
 	transition:all 0.3s ease 0s;
 }
+
+
 /*===================
 	End Blog CSS
 =====================*/
@@ -2709,6 +2723,35 @@ body{
 	margin-bottom: 4px;
 }
 
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.film {
+		width: 100%; /* Küçük ekranlar için tam genişlik */
+	}
+
+	.film-details h3 {
+		font-size: 16px; /* Daha küçük ekranlarda yazı tipi boyutunu küçült */
+	}
+
+	.movies-list {
+		gap: 10px; /* Küçük ekranlarda daha küçük boşluklar */
+	}
+}
+
+@media (max-width: 480px) {
+	.film {
+		padding: 10px; /* Çok küçük ekranlarda kenar boşluklarını azalt */
+	}
+
+	.film-details h3 {
+		font-size: 14px; /* Çok küçük ekranlar için daha küçük yazı tipi boyutu */
+	}
+
+	.film img {
+		aspect-ratio: 4 / 3; /* Mobilde görüntünün oranını ayarla */
+	}
+}
 /*=========================
    End movies Kutu CSS
 ===========================*/
@@ -3549,6 +3592,44 @@ body{
 	display:inline-block;
 	margin-left:4px;
 }
+
+/* Responsive Footer Stili */
+@media (max-width: 768px) {
+	.footer .footer-top {
+		padding: 30px 0;
+	}
+
+	.footer .single-footer h2 {
+		font-size: 16px;
+		margin-bottom: 20px;
+		padding-bottom: 10px;
+	}
+
+	.footer .single-footer .social li a {
+		height: 28px;
+		width: 28px;
+		line-height: 28px;
+		font-size: 12px;
+	}
+
+	.footer .single-footer.f-link li a {
+		font-size: 12px;
+	}
+
+	.footer .single-footer .newsletter-inner input {
+		height: 35px;
+		font-size: 12px;
+		padding-left: 15px;
+		padding-right: 60px;
+	}
+
+	.footer .single-footer .newsletter-inner .button {
+		height: 35px;
+		width: 35px;
+		font-size: 20px;
+	}
+}
+
 /*=========================
 	End Footer CSS
 ===========================*/
@@ -3694,7 +3775,7 @@ body{
     box-sizing: border-box;
 
 }
-
+/* Kart yapısı için mevcut stil */
 .project-card {
 	display: flex;
 	flex-direction: column;
@@ -3708,160 +3789,83 @@ body{
 	margin: 0 auto 30px; /* Alt boşluğu artırma */
 	position: relative;
 	text-align: left;
-	height: auto; /* Kartın yüksekliğini içeriğe göre ayarlama */
-	min-height: 170px; /* Minimum yüksekliği belirleme */
-}
-
-.project-card:last-child {
-    margin-bottom: 0; /* Son kartın altındaki boşluğu kaldırma */
+	height: auto;
+	min-height: 170px;
 }
 
 .project-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-direction: column; /* Kart başlığını dikey hizalama */
+	justify-content: center;
+	align-items: flex-start; /* Logoyu ve başlığı sola hizalama */
 }
 
 .project-card-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-    margin: 0;
+	font-size: 20px; /* Başlık fontunu biraz küçültme */
+	font-weight: bold;
+	color: #333333;
+	margin-bottom: 10px;
 }
 
-.project-card-logo img {
-    width: 50px;
-    height: auto;
+.project-card-logo {
+	display: flex;
+	gap: 10px; /* Logolar arasında boşluk bırakma */
+	margin-bottom: 10px;
 }
 
-.project-card-body {
-    margin-top: 10px; /* Üst boşluğu azaltma */
-}
-
-.project-card-tech {
-    font-size: 18px;
-    color: #555555;
-    margin: 0;
-}
-
-.project-card-link {
-    font-size: 14px; /* Font boyutunu küçültme */
-    color: #1e90ff;
-    text-decoration: none;
-    background-color: #f0f8ff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute;
-    bottom: 6px; /* Kartın altından yukarıdaki mesafe */
-    right: 20px; /* Kartın sağından soldaki mesafe */
-}
-
-.project-card-link:hover {
-    background-color: #1e90ff;
-    color: #ffffff;
-}
-
-
-
-
-
-/* Mobil ve Küçük Ekranlar İçin Duyarlı Tasarım */
-@media (max-width: 768px) {
-	/* Genel Ayarlar */
-	.news-single .single-main {
-		padding: 15px;
-	}
-
-	.news-single .news-title {
-		font-size: 20px;
-	}
-
-	.news-single .meta span, .news-single .meta span a {
-		font-size: 12px;
-	}
-
-	.news-single .meta-left .author img {
-		width: 35px;
-		height: 35px;
-	}
-
-	.news-single .news-text p {
-		font-size: 12px;
-	}
-
-	/* Proje Kartları */
-	.project-card {
-		padding: 10px;
-		min-height: 150px;
-	}
-
-	.project-card-title {
-		font-size: 18px;
-	}
-
-	.project-card-tech {
-		font-size: 14px;
-	}
-
-
-
-	/* Proje Listesi ve Diğer Elemanlar */
-	.project-list {
-		padding: 20px;
-	}
-
-	.project-title {
-		font-size: 22px;
-	}
-
-	.project-description, .project-text, .project-subtitle {
-		font-size: 16px;
-	}
-
-	.project-link a {
-		font-size: 16px;
-		padding: 8px 12px;
-	}
-
-	/* Görseller */
-	.news-single .news-head img {
+	.project-card-logo img {
+		width: 40px; /* Logoları daha küçük yapma */
 		height: auto;
 	}
 
-	.project-card-logo img {
-		width: 40px;
-	}
-
-	/* Metin Boyutları */
-	.news-single .news-content p {
-		font-size: 13px;
-	}
-
-	/* Proje Kartlarındaki Logo Alanı */
-	.project-card-header {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
-	.project-card-logo {
-		margin-top: 10px;
-	}
-
-	/* Proje Kartı Bağlantısı */
-	.project-card-link {
-		font-size: 12px;
-		bottom: 8px;
-		right: 10px;
-		padding: 6px 10px;
-	}
-	/* Butonlarla yazılar arasında boşluk ekleme */
-
-
-
+.project-card-body {
+	margin-top: 10px;
+	font-size: 16px; /* Kart içeriği için font boyutunu küçültme */
 }
 
+.project-card-tech {
+	font-size: 14px; /* Kart içeriği için font boyutunu küçültme */
+	color: #555555;
+	margin-bottom: 10px;
+}
 
+.project-card-link {
+	padding: 6px 10px; /* Butonun iç boşluklarını küçült */
+	max-width: 1200px; /* Maksimum genişliği sınırlayarak butonu daralt */
+	text-align: center; /* Metni ortala */
+
+	color: #fff;
+	background-color: #D1E9F6;
+	border-radius: 5px;
+}
+
+/* Responsive Mobil Düzenlemeler */
+@media (max-width: 768px) {
+	.project-card {
+		padding: 10px;
+	}
+
+	.project-card-title {
+		font-size: 18px; /* Mobilde başlık fontunu küçültme */
+	}
+
+	.project-card-logo img {
+		width: 35px; /* Mobilde logoları küçültme */
+	}
+
+	.project-card-body {
+		font-size: 14px; /* Mobilde içerik fontunu küçültme */
+	}
+
+	.project-card-tech {
+		font-size: 12px; /* Mobilde teknolojiler listesini küçültme */
+	}
+
+	.project-card-link {
+		font-size: 12px; /* Mobilde link fontunu küçültme */
+		padding: 6px 10px;
+	}
+}
 
 /*=========================
 	End Project  Alanlari Footer CSS
@@ -3918,16 +3922,16 @@ body{
 }
 
 .project-card1-link {
-    font-size: 14px; /* Font boyutunu küçültme */
-    color: #1e90ff;
-    text-decoration: none;
-    background-color: #f0f8ff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute;
-    bottom: 8px; /* Kartın altından yukarıdaki mesafe */
-    right: 20px; /* Kartın sağından soldaki mesafe */
+	font-size: 14px; /* Font boyutunu küçültme */
+	color: #1e90ff;
+	text-decoration: none;
+	background-color: #D1E9F6;
+	padding: 8px 12px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	position: absolute;
+	bottom: 8px; /* Kartın altından yukarıdaki mesafe */
+	right: 20px; /* Kartın sağından soldaki mesafe */
 }
 
 .project-card1-link:hover {

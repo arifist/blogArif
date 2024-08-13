@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\yazilim\\web\\Blog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\yazilim\\web\\Blog\\views\\user\\books.ejs||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\user\\books.ejs||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\yazilim\\web\\Blog\\views\\user\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\user\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\yazilim\\web\\Blog\\views\\user\\projects.ejs||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:views\\user\\projects.ejs||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,20 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "style.css",
               "DocumentMoniker": "D:\\yazilim\\web\\Blog\\views\\user\\style.css",
               "RelativeDocumentMoniker": "views\\user\\style.css",
               "ToolTip": "D:\\yazilim\\web\\Blog\\views\\user\\style.css",
               "RelativeToolTip": "views\\user\\style.css",
-              "ViewState": "AQIAALYAAAAAAAAAAAAAwNQAAAAAAAAA",
+              "ViewState": "AQIAAGwFAAAAAAAAAADwv4QFAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-08-13T08:45:23.244Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "projects.ejs",
+              "DocumentMoniker": "D:\\yazilim\\web\\Blog\\views\\user\\projects.ejs",
+              "RelativeDocumentMoniker": "views\\user\\projects.ejs",
+              "ToolTip": "D:\\yazilim\\web\\Blog\\views\\user\\projects.ejs",
+              "RelativeToolTip": "views\\user\\projects.ejs",
+              "ViewState": "AQIAADEBAAAAAAAAAADwvzgBAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-08-13T13:36:13.559Z",
               "EditorCaption": ""
             },
             {
@@ -41,19 +54,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "books.ejs",
-              "DocumentMoniker": "D:\\yazilim\\web\\Blog\\views\\user\\books.ejs",
-              "RelativeDocumentMoniker": "views\\user\\books.ejs",
-              "ToolTip": "D:\\yazilim\\web\\Blog\\views\\user\\books.ejs",
-              "RelativeToolTip": "views\\user\\books.ejs",
-              "ViewState": "AQIAANIAAAAAAAAAAADwv+kAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-13T10:32:54.49Z",
-              "EditorCaption": ""
             }
           ]
         }
