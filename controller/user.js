@@ -1,6 +1,5 @@
 const session = require("express-session");
 const authData=require("../model/userData");
-const bcrypt = require('bcrypt');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
