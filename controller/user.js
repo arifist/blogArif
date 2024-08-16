@@ -127,11 +127,10 @@ exports.movies=(req,res,next)=>{
     res.render("user/movies");
 }
 
-exports.cv=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/cv2.pdf';
-    res.download(file);
-}
+exports.cv = (req, res, next) => {
+  const file = path.join(__dirname, '../public/downloads/cv2.pdf');
+  res.download(file);
+};
 
 exports.about=(req,res,next)=>{  
 
