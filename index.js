@@ -9,6 +9,8 @@ const app=express();
 
 //set view engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 //body parser. Bodyden gelen bilgileri backend'de almak için tanımlanması zorunludur.
 app.use(bodyParser.urlencoded({ extended: true })); //extend:true->enabled json
