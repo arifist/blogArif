@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 
 exports.homePage=(req,res,next)=>{  
 
-    res.render("/views/user/homePage.ejs");
+    res.render("user/homePage.ejs");
 }
 
 exports.projects=(req,res,next)=>{  
