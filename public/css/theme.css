@@ -520,10 +520,11 @@ p.project-card1-tech {
 }
 
 /* Kart listelerini (projeler/sertifikalar) tek sütun yerine grid düzeninde, eşit yükseklikte göster */
+/* Sütun sayısı sabit 2 tutulur: tüm sayfalardaki kart adetleri 2'ye bölündüğünde satırların kart sayısı her zaman eşit olur (ilk satırla son satır arasında fark oluşmaz) */
 .single-main:has(.project-card),
 .single-main:has(.project-card1) {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+	grid-template-columns: repeat(2, 1fr);
 	gap: 24px;
 	align-items: stretch;
 }
@@ -782,6 +783,11 @@ p.project-card1-tech {
 	.project-card,
 	.project-card1 {
 		padding: 18px 16px;
+	}
+
+	.single-main:has(.project-card),
+	.single-main:has(.project-card1) {
+		grid-template-columns: 1fr;
 	}
 
 	.main-sidebar {
