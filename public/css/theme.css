@@ -492,6 +492,18 @@ p.project-card1-tech {
 	margin: 0;
 }
 
+/* Banner görseli/başlık/meta gibi kart-olmayan kardeş elemanlar grid'de tam genişlik kaplasın */
+.single-main:has(.project-card) > .news-head,
+.single-main:has(.project-card) > .meta,
+.single-main:has(.project-card) > h2,
+.single-main:has(.project-card) > br,
+.single-main:has(.project-card1) > .news-head,
+.single-main:has(.project-card1) > .meta,
+.single-main:has(.project-card1) > h2,
+.single-main:has(.project-card1) > br {
+	grid-column: 1 / -1;
+}
+
 /* ---------- Sidebar widgets ---------- */
 .main-sidebar .single-widget {
 	background: var(--c-card);
@@ -694,25 +706,32 @@ p.project-card1-tech {
 	}
 
 	.schedule .single-schedule {
-		margin: 10px 0;
+		margin: 8px 0;
+	}
+
+	.schedule .single-schedule .inner {
+		padding: 16px 12px;
 	}
 
 	.schedule .single-content {
-		padding: 20px 10px;
+		padding: 0;
 	}
 
 	.schedule .single-content h3 {
-		font-size: 16px !important;
-		margin-top: 8px;
+		font-size: 14px !important;
+		margin-top: 6px;
+		margin-bottom: 4px;
 	}
 
 	.schedule .single-content i:first-child {
-		font-size: 28px;
-		margin-bottom: 8px;
+		font-size: 22px;
+		margin-bottom: 4px;
 	}
 
 	.schedule .single-content p {
-		font-size: 12px;
+		font-size: 11px;
+		margin-top: 4px;
+		line-height: 1.4;
 	}
 
 	.section-title h2 {
