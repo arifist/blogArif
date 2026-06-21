@@ -13,7 +13,7 @@
 							<h2>Kitaplarım</h2>
 							<ul class="bread-list">
 								<li><a href="/">Ana Sayfa</a></li>
-								<li><i class="icofont-simple-right"></i></li>
+								<li><i class="fa fa-angle-right"></i></li>
 								<li class="active" >Kitaplarım</li>
 							</ul>
 						</div>
@@ -197,8 +197,19 @@
 											<h3>50- Yılgın Arayış - Ethem Şahin - 5/10</h3>
 										</div>
                                     </div>
+                                    <button type="button" id="booksToggleBtn" class="read-more-btn" style="margin-top:16px;">Devamını Göster (30 kitap daha)</button>
+                                    <script>
+                                        (function () {
+                                            var btn = document.getElementById('booksToggleBtn');
+                                            var list = btn.previousElementSibling;
+                                            btn.addEventListener('click', function () {
+                                                var expanded = list.classList.toggle('is-expanded');
+                                                btn.textContent = expanded ? 'Daha Az Göster' : 'Devamını Göster (30 kitap daha)';
+                                            });
+                                        })();
+                                    </script>
 
-     
+
 								</div>
 							</div>
 
