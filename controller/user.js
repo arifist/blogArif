@@ -1,7 +1,13 @@
-const session = require("express-session");
-const authData=require("../model/userData");
 const path = require('path');
 const nodemailer = require('nodemailer');
+
+const escapeHtml = (value = '') =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 
 exports.homePage=(req,res,next)=>{  
 
@@ -128,27 +134,34 @@ exports.movies=(req,res,next)=>{
 }
 
 exports.cv = (req, res, next) => {
-  const file = path.join(__dirname, '../public/downloads/cv2.pdf');
+  const file = path.join(__dirname, '../public/downloads/Arif_Kalayci_CV.pdf');
   res.download(file);
 };
 
-exports.about=(req,res,next)=>{  
+exports.about=(req,res,next)=>{
 
     res.render("user/about");
 }
-exports.hobbies=(req,res,next)=>{  
 
-    res.render("user/myHobbies");
-}
-
-exports.contactGet=(req,res,next)=>{  
+exports.contactGet=(req,res,next)=>{
 
     res.render("user/contact");
 }
 
 exports.contactPost = async (req, res, next) => {
 
-    const { name, email, phone, subject, message } = req.body;
+    const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        succeeded: false,
+        error: 'Lütfen isim, e-posta ve mesaj alanlarını doldurun.',
+      });
+    }
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
 
     const htmlTemplate = `
     <!doctype html>
@@ -259,9 +272,9 @@ exports.contactPost = async (req, res, next) => {
                       <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td>
-                            <p>Email: ${req.body.email}</p>
-                            <p>Name: ${req.body.name}</p>
-                            <p>Message: ${req.body.message}</p>
+                            <p>Email: ${safeEmail}</p>
+                            <p>Name: ${safeName}</p>
+                            <p>Message: ${safeMessage}</p>
                           </td>
                         </tr>
                       </table>
@@ -298,68 +311,34 @@ exports.contactPost = async (req, res, next) => {
         // send mail with defined transport object
         await transporter.sendMail({
           to: 'arif.kalayci444@gmail.com', // list of receivers
-          subject: `MAIL FROM ${req.body.email}`, // Subject line
+          replyTo: email,
+          subject: `MAIL FROM ${safeEmail}`, // Subject line
           html: htmlTemplate, // html body
         });
     
         res.status(200).json({ succeeded: true });
       } catch (error) {
+        console.error('contactPost mail error:', error);
         res.status(500).json({
           succeeded: false,
-          error,
+          error: 'Mesajınız gönderilirken bir hata oluştu, lütfen daha sonra tekrar deneyin.',
         });
       }
 };
 
 
-exports.sertifika1=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/javat.pdf';
-    res.download(file);
-}
-
-exports.sertifika2=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/atolye.pdf';
-    res.download(file);
-}
-exports.sertifika3=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/javab.pdf';
-    res.download(file);
-}
-exports.sertifika4=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/web.pdf';
-    res.download(file);
-}
-exports.sertifika5=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/tsql.pdf';
-    res.download(file);
-}
-exports.sertifika6=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/sql.pdf';
-    res.download(file);
-}
-exports.sertifika7=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/flutter.pdf';
-    res.download(file);
-}
-exports.sertifika8=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/python.pdf';
-    res.download(file);
-}
-exports.sertifika9=(req,res,next)=>{  
-
-    const file = 'D:/yazilim/web/Blog/public/downloads/cisco.pdf';
-    res.download(file);
-}
-exports.sertifika10=(req,res,next)=>{  
-
-  const file = 'D:/yazilim/web/Blog/public/downloads/mvc.pdf';
+const downloadCertificate = (fileName) => (req, res, next) => {
+  const file = path.join(__dirname, '../public/downloads', fileName);
   res.download(file);
-}
+};
+
+exports.sertifika1 = downloadCertificate('javat.pdf');
+exports.sertifika2 = downloadCertificate('atolye.pdf');
+exports.sertifika3 = downloadCertificate('javab.pdf');
+exports.sertifika4 = downloadCertificate('web.pdf');
+exports.sertifika5 = downloadCertificate('tsql.pdf');
+exports.sertifika6 = downloadCertificate('sql.pdf');
+exports.sertifika7 = downloadCertificate('flutter.pdf');
+exports.sertifika8 = downloadCertificate('python.pdf');
+exports.sertifika9 = downloadCertificate('cisco.pdf');
+exports.sertifika10 = downloadCertificate('mvc.pdf');

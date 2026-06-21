@@ -10,19 +10,13 @@
                                          </div>
 
 										<div class="row">
-											<div class="col-lg-4 col-md-4 col-12">
+											<div class="col-lg-6 col-md-6 col-12">
 												<div class="form-group">
 													<i class="fa fa-user"></i>
-													<input type="text" name="name" placeholder="İsim" required="required">
+													<input type="text" name="name" placeholder="İsim Soyisim" required="required">
 												</div>
 											</div>
-											<div class="col-lg-4 col-md-4 col-12">
-												<div class="form-group">
-													<i class="fa fa-envelope"></i>
-													<input type="text" name="last-name" placeholder="Soy İsim" required="required">
-												</div>
-											</div>
-											<div class="col-lg-4 col-md-4 col-12">
+											<div class="col-lg-6 col-md-6 col-12">
 												<div class="form-group">
 													<i class="fa fa-envelope"></i>
 													<input type="email" name="email" placeholder="Email" required="required">
@@ -46,47 +40,45 @@
 							</div>
 
                             <script>
-                                const form = document.querySelector('form')
-                                const sendMessage = document.querySelector('#sendMessage')
-                    
-                                form.addEventListener("submit", async (e) => {
+                                const commentForm = document.querySelector('.comments-form form')
+                                const commentMessage = commentForm.querySelector('#sendMessage')
+
+                                commentForm.addEventListener("submit", async (e) => {
                                    e.preventDefault();
-                    
-                                   const name = form.name.values
-                                   const email = form.email.value
-                                   const message = form.message.value
-                    
+
+                                   const name = commentForm.name.value
+                                   const email = commentForm.email.value
+                                   const message = commentForm.message.value
+
                                    try {
                                       const res = await fetch('/contact', {
                                          method: "POST",
                                          body: JSON.stringify({ name, email, message }),
                                          headers: { "Content-Type": "application/json" }
                                       })
-                    
+
                                       const data = await res.json();
-                    
-                                      console.log("DATA", data)
-                    
+
+                                      commentMessage.classList.toggle('alert-success', data.succeeded)
+                                      commentMessage.classList.toggle('alert-danger', !data.succeeded)
+                                      commentMessage.textContent = data.succeeded
+                                         ? "Yorumunuz değerlendirmeye alınmıştır. Teşekkürler..."
+                                         : (data.error || "Bir hata oluştu, lütfen tekrar deneyin.")
+                                      commentMessage.style.display = "block"
+
                                       if (data.succeeded) {
-                    
-                                         sendMessage.textContent = "Yorumunuz değerlendirmeye alınmıştır. Teşekkürler..."
-                                         sendMessage.style.display = "block"
-                    
-                                         setTimeout(() => {
-                                            sendMessage.style.display = "none"
-                                            form.name.value = ""
-                                            form.email.value = ""
-                                            form.message.value = ""
-                    
-                                         }, 5000)
-                    
-                    
-                    
+                                         commentForm.reset()
                                       }
-                    
-                    
+
+                                      setTimeout(() => {
+                                         commentMessage.style.display = "none"
+                                      }, 5000)
+
                                    } catch (err) {
-                                      console.log("ERR::", err)
+                                      commentMessage.classList.remove('alert-success')
+                                      commentMessage.classList.add('alert-danger')
+                                      commentMessage.textContent = "Bağlantı hatası, lütfen tekrar deneyin."
+                                      commentMessage.style.display = "block"
                                    }
                                 })
                              </script>

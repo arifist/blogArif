@@ -1,9 +1,10 @@
+require('dotenv').config();
+
 const express=require("express");
 const path = require('path');
 const bodyParser = require('body-parser')
 const configSession=require("./middleware/config_Session");
 const cookieParser = require('cookie-parser')
-require('dotenv').config();
 
 const app=express();
 
@@ -20,9 +21,14 @@ app.use(bodyParser.json());
 app.use(configSession);
 app.use(cookieParser());
 
+// Aktif menü öğesini belirlemek için view'lara güncel path'i aktar
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
 //---Static
 app.use('/static', express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname,"node_modules")))
 
 //router
 const authRouter=require("./routes/user");

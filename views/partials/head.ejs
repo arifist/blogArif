@@ -44,8 +44,8 @@
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li class="active"><a href="/">Ana Sayfa</a></li>
-											<li>
+											<li class="<%= currentPath === '/' ? 'active' : '' %>"><a href="/">Ana Sayfa</a></li>
+											<li class="<%= ['/projects','/experiences','/certificates','/project1','/project2','/project3','/project4','/project5','/project6','/project7','/project8','/project9','/project10','/project11','/project12','/project13','/project14'].includes(currentPath) ? 'active' : '' %>">
 												<a href="#" onclick="return false;">Becerilerim <i class="icofont-rounded-down"></i></a>
                                                 <ul class="dropdown">
                                                     <li><a href="/projects">Projelerim</a></li>
@@ -53,8 +53,8 @@
                                                     <li><a href="/certificates">Sertifikalarım</a></li>
                                                 </ul>
 											</li>
-											<li><a href="/cv">CV </a></li>
-                                            <li>
+											<li class="<%= currentPath === '/cv' ? 'active' : '' %>"><a href="/cv">CV </a></li>
+                                            <li class="<%= ['/books','/musics','/movies','/book1','/book2','/book3','/book4','/book5'].includes(currentPath) ? 'active' : '' %>">
                                                 <a href="#" onclick="return false;">Hobilerim <i class="icofont-rounded-down"></i></a>
                                                 <ul class="dropdown">
                                                     <li><a href="/books">Kitap</a></li>
@@ -62,8 +62,8 @@
                                                     <li><a href="/movies">Film</a></li>
                                                 </ul>
                                             </li>      
-											<li><a href="/about">Hakkımda </a></li>                                                                                                      
-											<li><a href="/contact">İletişim </a></li>
+											<li class="<%= currentPath === '/about' ? 'active' : '' %>"><a href="/about">Hakkımda </a></li>
+											<li class="<%= currentPath === '/contact' ? 'active' : '' %>"><a href="/contact">İletişim </a></li>
 										</ul>
 
 									</nav>

@@ -1,47 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-    <head>
-        <!-- Meta Tags -->
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="keywords" content="Site keywords here">
-		<meta name="description" content="">
-		<meta name='copyright' content=''>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-		<!-- Title -->
-        <title>Arif Kalaycı</title>
-		
-        <%- include('../partials/link.ejs') %>
+<%- include('../partials/documentHead', { pageTitle: 'İletişim' }) %>
+<body>
 
-        <link rel="stylesheet" href="/static/css/style.css">
-		<link rel="stylesheet" href="/static/css/normalize.css">
-		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/static/css/nice-select.css">
-		<link rel="stylesheet" href="/static/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/static/css/icofont.css">
-		<link rel="stylesheet" href="/static/css/slicknav.min.css">
-		<link rel="stylesheet" href="/static/css/owl-carousel.css">
-		<link rel="stylesheet" href="/static/css/datepicker.css">
-		<link rel="stylesheet" href="/static/css/animate.min.css">
-		<link rel="stylesheet" href="/static/css/magnific-popup.css">
-		<link rel="stylesheet" href="/static/css/responsive.css">
-        <style>
-
-            input[type="email"] {
-                text-transform: none;
-            }
-
-      </style>
-    </head>
-
-    <body>
-	
-		
-
-	
-		<!-- Header Area -->
-        <%- include('../partials/head.ejs') %>
+	<%- include('../partials/head.ejs') %>
 
 		<!-- End Header Area -->
 	
@@ -172,7 +132,7 @@
 
     </body>
     <script>
-        const form = document.querySelector('form')
+        const form = document.querySelector('#request')
         const sendMessage = document.querySelector('#sendMessage')
 
         form.addEventListener("submit", async (e) => {
@@ -180,7 +140,11 @@
 
            const name = form.name.value
            const email = form.email.value
-           const message = form.message.value
+           const subject = form.subject.value
+           const message = subject ? `[${subject}] ${form.message.value}` : form.message.value
+
+           const submitBtn = form.querySelector('button[type="submit"]')
+           submitBtn.disabled = true
 
            try {
               const res = await fetch('/contact', {
@@ -191,28 +155,28 @@
 
               const data = await res.json();
 
-              console.log("DATA", data)
+              sendMessage.classList.toggle('alert-success', data.succeeded)
+              sendMessage.classList.toggle('alert-danger', !data.succeeded)
+              sendMessage.textContent = data.succeeded
+                 ? "Mesajınız başarıyla gönderildi, en kısa sürede dönüş yapacağım."
+                 : (data.error || "Bir hata oluştu, lütfen tekrar deneyin.")
+              sendMessage.style.display = "block"
 
               if (data.succeeded) {
-
-                 sendMessage.textContent = "Mesajınız başarıyla gönderildi..."
-                 sendMessage.style.display = "block"
-
-                 setTimeout(() => {
-                    sendMessage.style.display = "none"
-                    form.name.value = ""
-                    form.email.value = ""
-                    form.message.value = ""
-
-                 }, 5000)
-
-
-
+                 form.reset()
               }
 
+              setTimeout(() => {
+                 sendMessage.style.display = "none"
+              }, 5000)
 
            } catch (err) {
-              console.log("ERR::", err)
+              sendMessage.classList.remove('alert-success')
+              sendMessage.classList.add('alert-danger')
+              sendMessage.textContent = "Bağlantı hatası, lütfen tekrar deneyin."
+              sendMessage.style.display = "block"
+           } finally {
+              submitBtn.disabled = false
            }
         })
      </script>
