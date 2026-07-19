@@ -39,3 +39,43 @@
 <script src="/static/js/main.js"></script>
 <!-- Devamını Oku JS -->
 <script src="/static/js/read-more.js"></script>
+
+<!-- Ziyaret analitiği (sayfa görüntüleme + sayfada kalma süresi) -->
+<script>
+(function () {
+  if (!navigator.sendBeacon) return;
+
+  var pageviewId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2));
+  var startTime = performance.now();
+  var durationSent = false;
+
+  function send(url, payload) {
+    try {
+      var blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+      navigator.sendBeacon(url, blob);
+    } catch (e) {
+      /* sessizce yut */
+    }
+  }
+
+  send('/api/analytics/track', {
+    id: pageviewId,
+    path: location.pathname,
+    referrer: document.referrer || '',
+  });
+
+  function sendDuration() {
+    if (durationSent) return;
+    durationSent = true;
+    send('/api/analytics/duration', {
+      id: pageviewId,
+      duration: Math.round(performance.now() - startTime),
+    });
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') sendDuration();
+  });
+  window.addEventListener('pagehide', sendDuration);
+})();
+</script>

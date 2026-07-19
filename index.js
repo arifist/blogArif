@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const crypto = require('crypto');
 const express=require("express");
 const path = require('path');
 const bodyParser = require('body-parser')
@@ -27,11 +28,30 @@ app.use((req, res, next) => {
   next();
 });
 
+// Ziyaret analitiği için kalıcı (1 yıl), anonim bir tarayıcı kimliği ata
+app.use((req, res, next) => {
+  if (!req.cookies.visitor_id) {
+    const visitorId = crypto.randomUUID();
+    res.cookie('visitor_id', visitorId, {
+      maxAge: 1000 * 60 * 60 * 24 * 365,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
+    req.cookies.visitor_id = visitorId;
+  }
+  next();
+});
+
 //---Static
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 //router
 const authRouter=require("./routes/user");
+const analyticsRouter=require("./routes/analytics");
+const cronRouter=require("./routes/cron");
+app.use(analyticsRouter);
+app.use(cronRouter);
 app.use("/", authRouter);
 
 app.listen(process.env.PORT || 3000,()=>{
