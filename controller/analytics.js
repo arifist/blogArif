@@ -28,10 +28,9 @@ exports.track = async (req, res) => {
     });
   } catch (err) {
     console.error('analytics track error:', err);
-    return res.status(200).json({ ok: false, debug: { name: err.name, message: err.message } });
   }
 
-  res.status(200).json({ ok: true });
+  res.status(204).end();
 };
 
 exports.duration = async (req, res) => {

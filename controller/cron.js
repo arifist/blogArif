@@ -141,10 +141,6 @@ exports.monthlyReport = async (req, res) => {
     res.status(200).json({ succeeded: true, totalVisits, uniqueVisitors });
   } catch (err) {
     console.error('monthlyReport cron error:', err);
-    res.status(500).json({
-      succeeded: false,
-      error: 'internal_error',
-      debug: { name: err.name, message: err.message },
-    });
+    res.status(500).json({ succeeded: false, error: 'internal_error' });
   }
 };
