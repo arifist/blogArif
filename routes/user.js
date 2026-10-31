@@ -44,6 +44,8 @@ router.get("/cv",userController.cv);
 
 router.get("/about",userController.about);
 
+router.get("/about2",userController.about2);
+
 router.get("/books",userController.books);
 
 router.get("/book1",userController.book1);

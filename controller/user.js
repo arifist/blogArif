@@ -143,6 +143,30 @@ exports.about=(req,res,next)=>{
     res.render("user/about");
 }
 
+// Araştırma amaçlı, bağlantısız/gizli test sayfası (prompt-injection deneyi).
+// - Erişim ABOUT2_ACCESS_KEY ortam değişkeniyle korunur; key eşleşmezse veya
+//   tanımlı değilse sayfa yokmuş gibi 404 döner (varlığı sızdırılmaz).
+// - Enjeksiyon cümlelerinin KENDİSİ de repoda tutulmaz (repo public), sadece
+//   ABOUT2_TEST_A..E ortam değişkenlerinden okunur. ?test=A..E ile hangi
+//   cümlenin render edileceği seçilir; hiçbiri seçilmezse (kontrol koşusu)
+//   gizli blok tamamen boş kalır.
+exports.about2=(req,res,next)=>{
+
+    const accessKey = process.env.ABOUT2_ACCESS_KEY;
+    if(!accessKey || req.query.key !== accessKey){
+        return res.status(404).end();
+    }
+
+    const allowedTests = ['A','B','C','D','E'];
+    const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
+    const hiddenSentence = allowedTests.includes(requestedTest)
+        ? (process.env['ABOUT2_TEST_' + requestedTest] || '')
+        : '';
+
+    res.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
+    res.render("user/about2", { hiddenSentence });
+}
+
 exports.contactGet=(req,res,next)=>{
 
     res.render("user/contact");

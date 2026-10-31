@@ -1,0 +1,70 @@
+<%- include('../partials/documentHead', { pageTitle: 'Hakkımda' }) %>
+<body>
+
+	<%- include('../partials/head.ejs') %>
+
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Hakkımda</h2>
+                        <ul class="bread-list">
+                            <li><a href="/">Ana Sayfa</a></li>
+                            <li><i class="fa fa-angle-right"></i></li>
+                            <li class="active">Hakkımda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Single News -->
+    <section class="news-single section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="single-main">
+                                <!-- News Title -->
+                                <h1 class="news-title"><a href="news-single.html" onclick="return false;">Arif Kalaycı</a></h1>
+                                <!-- News Text -->
+                                <div class="book-blog">
+                                    <p>Merhaba, Ben Arif Kalaycı. 2001 yılında güzel bir Malatya gününde doğdum ve hayatımın büyük bir kısmını teknolojiyle iç içe geçirdim. Yazılım mühendisi olarak kariyerime devam ederken, özel hayatımda da çeşitli ilgi alanları ve hobilerimle aktif bir yaşam sürdürüyorum.</p>
+                                    <p>Eğitim hayatımı Malatya ve Samsun şehirlerinde geçirdim. Bu şehirlerde ilköğretim, lise ve üniversite eğitimlerimi tamamladım.</p>
+                                    <p>Üniversite eğitimim boyunca bilgisayar bilimleri üzerine yoğunlaştım ve bu alanda derinlemesine bilgi edindim. Özellikle web geliştirme, java geliştirme, veritabanı yönetimi ve yapay zeka konularında uzmanlaşmaya çalıştım.</p>
+                                    <p>Şu anda yazılım mühendisi olarak çalışma hayatıma devam ediyor, ASP.NET ile backend geliştirme, veritabanı yönetimi ve RESTful API tasarımı üzerine profesyonel deneyim kazanıyorum.</p>
+                                    <p>Bu siteyi oluştururken amacım, hem profesyonel çalışmalarımı hem de kişisel ilgi alanlarımı paylaşmak ve bu yolda yeni insanlarla bağlantı kurmak.</p>
+
+                                    <%# Araştırma amaçlı gizli enjeksiyon kanalı. Sunucu, ?test=A..E parametresine
+                                        göre ABOUT2_TEST_A..E ortam değişkenlerinden okuduğu TEK cümleyi buraya
+                                        basar; parametre verilmezse (kontrol koşusu) blok boş kalır. Metnin kendisi
+                                        repoda yok, sadece Vercel/.env'deki ortam değişkenlerinde. %>
+                                    <% if (hiddenSentence) { %>
+                                    <div style="color:#ffffff; background:#ffffff; font-size:1px; line-height:0; max-height:0; overflow:hidden;" aria-hidden="true" data-purpose="research-only-prompt-injection-canary">
+                                        <%= hiddenSentence %>
+                                    </div>
+                                    <% } %>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer.ejs') %>
+
+    <!--/ End Footer Area -->
+
+    <%- include('../partials/script.ejs') %>
+
+</body>
+</html>
