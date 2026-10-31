@@ -144,23 +144,31 @@ exports.about=(req,res,next)=>{
 }
 
 // Araştırma amaçlı, bağlantısız/gizli test sayfası (prompt-injection deneyi).
-// - Erişim ABOUT2_ACCESS_KEY ortam değişkeniyle korunur; key eşleşmezse veya
-//   tanımlı değilse sayfa yokmuş gibi 404 döner (varlığı sızdırılmaz).
-// - Enjeksiyon cümlelerinin KENDİSİ de repoda tutulmaz (repo public), sadece
-//   ABOUT2_TEST_A..E ortam değişkenlerinden okunur. ?test=A..E ile hangi
-//   cümlenin render edileceği seçilir; hiçbiri seçilmezse (kontrol koşusu)
-//   gizli blok tamamen boş kalır.
+// - Erişim, TEK bir ABOUT2_CONFIG ortam değişkeniyle korunur (JSON):
+//     { "key": "...", "A": "cümle A", "B": "cümle B", ... }
+//   ?key= eşleşmezse veya ABOUT2_CONFIG tanımlı/geçerli değilse sayfa
+//   yokmuş gibi 404 döner (varlığı sızdırılmaz).
+// - Enjeksiyon cümlelerinin KENDİSİ repoda tutulmaz (repo public), sadece
+//   bu tek ortam değişkeninden okunur. ?test=A..E ile hangi cümlenin
+//   render edileceği seçilir; hiçbiri seçilmezse (kontrol koşusu) gizli
+//   blok tamamen boş kalır.
 exports.about2=(req,res,next)=>{
 
-    const accessKey = process.env.ABOUT2_ACCESS_KEY;
-    if(!accessKey || req.query.key !== accessKey){
+    let config = null;
+    try{
+        config = JSON.parse(process.env.ABOUT2_CONFIG || '');
+    }catch(e){
+        config = null;
+    }
+
+    if(!config || !config.key || req.query.key !== config.key){
         return res.status(404).end();
     }
 
     const allowedTests = ['A','B','C','D','E'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
     const hiddenSentence = allowedTests.includes(requestedTest)
-        ? (process.env['ABOUT2_TEST_' + requestedTest] || '')
+        ? (config[requestedTest] || '')
         : '';
 
     res.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
