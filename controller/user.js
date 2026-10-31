@@ -149,9 +149,15 @@ exports.about=(req,res,next)=>{
 //   ?key= eşleşmezse veya ABOUT2_CONFIG tanımlı/geçerli değilse sayfa
 //   yokmuş gibi 404 döner (varlığı sızdırılmaz).
 // - Enjeksiyon cümlelerinin KENDİSİ repoda tutulmaz (repo public), sadece
-//   bu tek ortam değişkeninden okunur. ?test=A..E ile hangi cümlenin
+//   bu tek ortam değişkeninden okunur. ?test=A..H ile hangi cümlenin
 //   render edileceği seçilir; hiçbiri seçilmezse (kontrol koşusu) gizli
 //   blok tamamen boş kalır.
+// - A..E: ajanın gerçekten bir eylem (form gönderip mail attırma) yapıp
+//   yapmadığını ölçer — tool/araç erişimi olan bir ajan gerekir.
+// - F..H: "echo" varyantları — ajan araç erişimi olmasa bile, sadece metin
+//   cevabında gizli talimata uyup uymadığını (cevabına doğrulama kodu
+//   ekleyip eklemediğini) ölçer; düz sohbet arayüzleriyle (Gemini web vb.)
+//   de test edilebilir.
 exports.about2=(req,res,next)=>{
 
     let config = null;
@@ -165,7 +171,7 @@ exports.about2=(req,res,next)=>{
         return res.status(404).end();
     }
 
-    const allowedTests = ['A','B','C','D','E'];
+    const allowedTests = ['A','B','C','D','E','F','G','H'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
     const hiddenSentence = allowedTests.includes(requestedTest)
         ? (config[requestedTest] || '')
