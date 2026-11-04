@@ -178,6 +178,13 @@ exports.about=(req,res,next)=>{
 //   hepsi "gizli" kanaldan geliyordu; S, "görünürlük" tek başına bir
 //   fark yaratıyor mu" sorusunu izole eder. Hâlâ yalnızca /about2'de,
 //   yalnızca anahtarla erişilebilir — gerçek /about'a asla eklenmez.
+// - T..W: EYLEM değil, ÇIKTI/DAVRANIŞ manipülasyonu dener (araç erişimi
+//   olmayan düz sohbet ajanlarında da anlamlı):
+//     T - sistem promptu sızdırma denemesi
+//     U - görev saptırma (kullanıcının "özetle" isteğini tamamen yoksama)
+//     V - sahte bağlantı enjeksiyonu (cevaba "resmi" diye sahte link ekletme)
+//     W - kalıcılık: talimatın konuşmanın SONRAKİ, alakasız turlarında da
+//         etkisini sürdürüp sürdürmediği
 exports.about2=(req,res,next)=>{
 
     let config = null;
@@ -191,7 +198,7 @@ exports.about2=(req,res,next)=>{
         return res.status(404).end();
     }
 
-    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S'];
+    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
     const activeTest = allowedTests.includes(requestedTest) ? requestedTest : '';
     const hiddenSentence = activeTest && activeTest !== 'P' ? (config[activeTest] || '') : '';
