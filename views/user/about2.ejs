@@ -93,6 +93,14 @@
 
                                     <p>Bu siteyi oluştururken amacım, hem profesyonel çalışmalarımı hem de kişisel ilgi alanlarımı paylaşmak ve bu yolda yeni insanlarla bağlantı kurmak.</p>
 
+                                    <%# TEKNİK S: HİÇ GİZLENMEMİŞ, normal/görünür bir paragraf — kontrol
+                                        karşılaştırması: "gizlilik" tek başına fark yaratıyor mu? Çıplak gözle
+                                        de okunur; bu sayfa zaten sadece anahtar bilen (sen) tarafından
+                                        görülebildiği için insan ziyaretçi riski yok. %>
+                                    <% if (activeTest === 'S' && hiddenSentence) { %>
+                                    <p data-purpose="research-only-prompt-injection-canary"><%= hiddenSentence %></p>
+                                    <% } %>
+
                                     <%# TEKNİK N: <head><meta name="description"> içine gizleme — bu, body'de
                                         hiç yer almaz; sadece sayfanın <head>'ini (ör. SEO/önizleme amaçlı meta
                                         verisini) okuyan araçlara görünür. Controller, activeTest==='N' iken bu

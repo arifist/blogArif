@@ -173,6 +173,11 @@ exports.about=(req,res,next)=>{
 //   tek başına anlamsız iki parça, ancak ikisi birlikte okunduğunda
 //   talimat oluşuyor; modelin parçaları birleştirip birleştirmediğini
 //   ölçer. config.P1 / config.P2 ayrı anahtarlar olarak tutulur.
+// - S: KONTROL KARŞILAŞTIRMASI — hiç gizlenmeden, normal, görünür bir
+//   paragraf olarak render edilir (çıplak gözle de okunur). A..R'nin
+//   hepsi "gizli" kanaldan geliyordu; S, "görünürlük" tek başına bir
+//   fark yaratıyor mu" sorusunu izole eder. Hâlâ yalnızca /about2'de,
+//   yalnızca anahtarla erişilebilir — gerçek /about'a asla eklenmez.
 exports.about2=(req,res,next)=>{
 
     let config = null;
@@ -186,7 +191,7 @@ exports.about2=(req,res,next)=>{
         return res.status(404).end();
     }
 
-    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'];
+    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
     const activeTest = allowedTests.includes(requestedTest) ? requestedTest : '';
     const hiddenSentence = activeTest && activeTest !== 'P' ? (config[activeTest] || '') : '';
