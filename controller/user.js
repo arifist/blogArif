@@ -185,16 +185,30 @@ exports.about=(req,res,next)=>{
 //     V - sahte bağlantı enjeksiyonu (cevaba "resmi" diye sahte link ekletme)
 //     W - kalıcılık: talimatın konuşmanın SONRAKİ, alakasız turlarında da
 //         etkisini sürdürüp sürdürmediği
+// ABOUT2_CONFIG formatı JSON DEĞİL — satır satır "HARF=cümle" (ilk "="
+// işaretinden böler, cümlenin içinde "=" geçmesi sorun değil). Sebep:
+// JSON'da yeni bir harf eklemek tüm değeri baştan yapıştırmayı gerektiriyordu
+// (bir virgül/parantez unutulursa tüm config bozuluyordu). Bu formatta yeni
+// bir teknik eklemek, mevcut değerin EN ALTINA yeni satır(lar) eklemek kadar
+// basit — üsttekilere dokunmaya gerek yok. Tek kısıt: her girdi TEK satır
+// olmalı (içinde gerçek satır sonu olamaz). İlk satır KEY=<erişim anahtarı>.
+function parseAbout2Config(raw){
+    const result = {};
+    if(!raw) return result;
+    for(const line of raw.split(/\r?\n/)){
+        const idx = line.indexOf('=');
+        if(idx === -1) continue;
+        const k = line.slice(0, idx).trim();
+        if(k) result[k] = line.slice(idx + 1);
+    }
+    return result;
+}
+
 exports.about2=(req,res,next)=>{
 
-    let config = null;
-    try{
-        config = JSON.parse(process.env.ABOUT2_CONFIG || '');
-    }catch(e){
-        config = null;
-    }
+    const config = parseAbout2Config(process.env.ABOUT2_CONFIG);
 
-    if(!config || !config.key || req.query.key !== config.key){
+    if(!config.KEY || req.query.key !== config.KEY){
         return res.status(404).end();
     }
 
