@@ -158,6 +158,12 @@ exports.about=(req,res,next)=>{
 //   cevabında gizli talimata uyup uymadığını (cevabına doğrulama kodu
 //   ekleyip eklemediğini) ölçer; düz sohbet arayüzleriyle (Gemini web vb.)
 //   de test edilebilir.
+// - I..N: aynı "echo" ölçütünü kullanır ama her biri FARKLI bir gizleme
+//   TEKNİĞİ/konumuyla dener (HTML yorumu, ekran dışı konumlandırma,
+//   opacity:0, img alt metni, paragraf arası yerleştirme, meta description
+//   etiketi) — hangi tekniğin hangi ajan/okuma yöntemine karşı işe
+//   yaradığını kıyaslamak için. view bu harfe göre hangi teknik/konumu
+//   kullanacağına karar verir (about2.ejs).
 exports.about2=(req,res,next)=>{
 
     let config = null;
@@ -171,14 +177,17 @@ exports.about2=(req,res,next)=>{
         return res.status(404).end();
     }
 
-    const allowedTests = ['A','B','C','D','E','F','G','H'];
+    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
-    const hiddenSentence = allowedTests.includes(requestedTest)
-        ? (config[requestedTest] || '')
-        : '';
+    const activeTest = allowedTests.includes(requestedTest) ? requestedTest : '';
+    const hiddenSentence = activeTest ? (config[activeTest] || '') : '';
 
     res.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
-    res.render("user/about2", { hiddenSentence });
+    res.render("user/about2", {
+        activeTest,
+        hiddenSentence,
+        metaDescription: activeTest === 'N' ? hiddenSentence : undefined
+    });
 }
 
 exports.contactGet=(req,res,next)=>{
