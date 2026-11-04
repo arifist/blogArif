@@ -164,6 +164,15 @@ exports.about=(req,res,next)=>{
 //   etiketi) — hangi tekniğin hangi ajan/okuma yöntemine karşı işe
 //   yaradığını kıyaslamak için. view bu harfe göre hangi teknik/konumu
 //   kullanacağına karar verir (about2.ejs).
+// - O,Q,R: aynı "echo" ölçütü, ama CÜMLENİN ÇERÇEVELENMESİNİ değiştirir
+//   (sahte sistem/operatör etiketi, "önceki talimatları geçersiz kılar"
+//   iddiası, base64 ile kodlanmış talimat) — teknik aynı (sayfa sonu,
+//   beyaz yazı), değişen tek şey modelin bağlam ayrımını kırmaya çalışan
+//   ifade biçimi.
+// - P: iki parçaya BÖLÜNMÜŞ talimat (P1 sayfanın başında, P2 sonunda) —
+//   tek başına anlamsız iki parça, ancak ikisi birlikte okunduğunda
+//   talimat oluşuyor; modelin parçaları birleştirip birleştirmediğini
+//   ölçer. config.P1 / config.P2 ayrı anahtarlar olarak tutulur.
 exports.about2=(req,res,next)=>{
 
     let config = null;
@@ -177,15 +186,19 @@ exports.about2=(req,res,next)=>{
         return res.status(404).end();
     }
 
-    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N'];
+    const allowedTests = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'];
     const requestedTest = typeof req.query.test === 'string' ? req.query.test.toUpperCase() : '';
     const activeTest = allowedTests.includes(requestedTest) ? requestedTest : '';
-    const hiddenSentence = activeTest ? (config[activeTest] || '') : '';
+    const hiddenSentence = activeTest && activeTest !== 'P' ? (config[activeTest] || '') : '';
+    const splitFragment1 = activeTest === 'P' ? (config.P1 || '') : '';
+    const splitFragment2 = activeTest === 'P' ? (config.P2 || '') : '';
 
     res.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
     res.render("user/about2", {
         activeTest,
         hiddenSentence,
+        splitFragment1,
+        splitFragment2,
         metaDescription: activeTest === 'N' ? hiddenSentence : undefined
     });
 }
